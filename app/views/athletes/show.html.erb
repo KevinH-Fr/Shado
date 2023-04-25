@@ -1,0 +1,35 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @athlete %>
+
+<div>
+  <%= link_to "Edit this athlete", edit_athlete_path(@athlete) %> |
+  <%= link_to "Back to athletes", athletes_path %>
+
+  <%= button_to "Destroy this athlete", @athlete, method: :delete %>
+</div>
+
+<div>
+
+
+<% @posts.each do |post| %>
+  <%= post.id %> 
+  <%= post.content %> 
+  <hr>  
+<%end%>
+
+</div>
+
+
+
+<div id="js">
+  content 
+</div>
+
+<button onclick="changeContent()">Click me</button>
+
+<script>
+function changeContent() {
+  document.getElementById("js").innerHTML = "New content";
+}
+</script>
