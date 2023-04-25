@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+ .navitem{ 
+    margin: 10px;
+    padding: 30px;
+    background-color: rgb(105, 24, 129);
+    font-size: xx-large;
+    border-radius: 20px;    
+    
+ }
+
+ .navitem:hover{ 
+    background-color: yellow;
+ }
