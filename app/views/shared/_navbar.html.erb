@@ -1,8 +1,40 @@
 
-<div class="m-2 p-2" >  
+<div class="m-2 p-2 text-center" >  
   <%= link_to image_tag("shado-logo.png", width:50), root_path, class: "" %>
 </div>
 
-<div class= "navitem">  
-  <%= link_to "Home", root_path, class: "" %>
+<%= link_to(root_path, class:"navlink") do %>
+  <i class="bi bi-house"></i>
+  <span class="m-2"> Home  </span>
+<% end %> 
+
+<%= link_to(posts_path, class:"navlink") do %>
+  <i class="bi bi-people"></i>
+  <span class="m-2"> Fan Base  </span>
+<% end %>  
+
+<%= link_to(root_path, class:"navlink") do %>
+  <i class="bi bi-bell"></i>
+  <span class="m-2"> Notifications  </span>
+<% end %>  
+
+<%= link_to(athletes_path, class:"navlink") do %>
+  <i class="bi bi-star"></i>
+  <span class="m-2"> Subscriptions  </span>
+<% end %>  
+
+<%= link_to(root_path, class:"navlink") do %>
+  <i class="bi bi-person"></i>
+  <span class="m-2"> My Profile  </span>
+<% end %>  
+
+<%= link_to(root_path, class:"navlink") do %>
+  <i class="bi bi-clipboard2-data"></i>
+  <span class="m-2"> Dashboard  </span>
+<% end %>  
+<div class="navnewpost">
+<%= link_to "New Post", new_post_path, class: "navnewpost" %>
 </div>
+  
+
+
