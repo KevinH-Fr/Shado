@@ -1,2 +1,7 @@
 
 cette page est dans views home index
+<%=current_user.id%>
+<br>
+<%=current_user.email%>
+<%= link_to "I am an athlete", new_athlete_path %>
+<%= link_to "I am a Fan", new_fan_path %>
