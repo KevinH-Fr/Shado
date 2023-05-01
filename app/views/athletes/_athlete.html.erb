@@ -16,7 +16,8 @@
 
   <p>
     <strong>User:</strong>
-    <%=@user.email%>
+    <%=@user.email if @user.present?%>
+    <%=current_user.id%>
   </p>
 
 </div>

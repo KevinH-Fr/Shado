@@ -13,10 +13,20 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+
+    
+    @athlete = Athlete.where(user_id: current_user.id).first
+
+    # tempo alternative athlete ou fan
+    unless @athlete.present?
+      @fan = Fan.where(user_id: current_user.id).first
+    end
+
   end
 
   # GET /posts/1/edit
   def edit
+    @athlete = Athlete.where(user_id: current_user.id).first
   end
 
   # POST /posts or /posts.json
@@ -65,6 +75,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :location, :content, :athlete_id)
+      params.require(:post).permit(:title, :location, :content, :athlete_id, :fan_id)
     end
 end

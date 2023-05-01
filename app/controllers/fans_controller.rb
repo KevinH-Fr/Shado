@@ -8,6 +8,7 @@ class FansController < ApplicationController
 
   # GET /fans/1 or /fans/1.json
   def show
+    @user = User.find(@fan.user_id)
   end
 
   # GET /fans/new
@@ -65,6 +66,6 @@ class FansController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fan_params
-      params.require(:fan).permit(:pseudo, :bio)
+      params.require(:fan).permit(:pseudo, :bio, :user_id)
     end
 end

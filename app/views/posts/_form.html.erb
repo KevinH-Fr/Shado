@@ -12,24 +12,32 @@
   <% end %>
 
   <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%#= form.label :title, style: "display: block" %>
+    <%#= form.text_field :title %>
   </div>
 
   <div>
-    <%= form.label :location, style: "display: block" %>
-    <%= form.text_field :location %>
+    <%#= form.label :location, style: "display: block" %>
+    <%#= form.text_field :location %>
   </div>
 
   <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.text_area :content %>
+    <%#= form.label :content, style: "display: block" %>
+    <%= form.text_area :content, placeholder: "Compose new post... "  %>
   </div>
 
   <div>
-    <%= form.label :athlete_id, style: "display: block" %>
-    <%= form.text_field :athlete_id %>
+    <%# form.label :athlete_id, style: "display: block" %>
+    <%= form.hidden_field :athlete_id, value: @athlete.id %>
   </div>
+
+  <%# tempo alternative athlete ou fan  %>
+  <% if @fan.present? %>
+    <div>
+      <%#= form.label :fan_id, style: "display: block" %>
+      <%= form.hidden_field :fan_id, value: @fan.id %>
+    </div>
+  <% end %>
 
   <div>
     <%= form.submit %>

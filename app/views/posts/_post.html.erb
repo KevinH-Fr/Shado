@@ -1,4 +1,6 @@
 <div id="<%= dom_id post %>">
+ <%
+=begin%>
   <p>
     <strong>Title:</strong>
     <%= post.title %>
@@ -8,15 +10,21 @@
     <strong>Location:</strong>
     <%= post.location %>
   </p>
-
+ 
+<%
+=end%>
   <p>
     <strong>Content:</strong>
     <%= post.content %>
   </p>
 
-  <p>
+<%
+=begin%>
+   <p>
     <strong>Athlete:</strong>
     <%= post.athlete_id %>
-  </p>
+  </p> 
+<%
+=end%>
 
 </div>

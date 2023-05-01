@@ -10,7 +10,7 @@ class AthletesController < ApplicationController
   def show
     #@posts =  Post.where(athlete_id: @athlete.id) 
     @posts = @athlete.posts
-    @user = User.find(@athlete.user_id)
+    @user = User.find(@athlete.user_id) if @user.present?
   end
 
   # GET /athletes/new

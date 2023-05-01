@@ -4,37 +4,37 @@
 </div>
 
 <%= link_to(root_path, class:"navlink") do %>
-  <i class="bi bi-house"></i>
-  <span class="m-2"> Home  </span>
+  <i class="bi bi-house iconsizenavbar"></i>
+  <span class="textnavbar"> Home  </span>
 <% end %> 
 
 <%= link_to(posts_path, class:"navlink") do %>
-  <i class="bi bi-people"></i>
-  <span class="m-2"> Fan Base  </span>
+  <i class="bi bi-people iconsizenavbar"></i>
+  <span class="textnavbar"> Fan Base  </span>
 <% end %>  
 
 <%= link_to(root_path, class:"navlink") do %>
-  <i class="bi bi-bell"></i>
-  <span class="m-2"> Notifications  </span>
+  <i class="bi bi-bell iconsizenavbar"></i>
+  <span class="textnavbar"> Notifications  </span>
 <% end %>  
 
 <%= link_to(athletes_path, class:"navlink") do %>
-  <i class="bi bi-star"></i>
-  <span class="m-2"> Subscriptions  </span>
+  <i class="bi bi-star iconsizenavbar"></i>
+  <span class="textnavbar"> Subscriptions  </span>
 <% end %>  
 
 <%= link_to(root_path, class:"navlink") do %>
-  <i class="bi bi-person"></i>
-  <span class="m-2"> My Profile  </span>
+  <i class="bi bi-person iconsizenavbar"></i>
+  <span class="textnavbar "> My Profile  </span>
 <% end %>  
 
 <%= link_to(root_path, class:"navlink") do %>
-  <i class="bi bi-clipboard2-data"></i>
-  <span class="m-2"> Dashboard  </span>
+  <i class="bi bi-clipboard2-data iconsizenavbar"></i>
+  <span class="textnavbar"> Dashboard  </span>
 <% end %>  
-<div class="navnewpost">
-<%= link_to "New Post", new_post_path, class: "navnewpost" %>
-</div>
-  
+
+<%= link_to(new_post_path, class:"navlink navnewpost") do %>
+  <span> New Post </span>
+<% end %>  
 
 

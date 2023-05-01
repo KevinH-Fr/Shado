@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_26_210330) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_01_150447) do
   create_table "athletes", force: :cascade do |t|
     t.string "name"
     t.string "discipline"
@@ -26,6 +26,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_26_210330) do
     t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_fans_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -35,7 +37,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_26_210330) do
     t.integer "athlete_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "fan_id"
     t.index ["athlete_id"], name: "index_posts_on_athlete_id"
+    t.index ["fan_id"], name: "index_posts_on_fan_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,5 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_26_210330) do
   end
 
   add_foreign_key "athletes", "users"
+  add_foreign_key "fans", "users"
   add_foreign_key "posts", "athletes"
+  add_foreign_key "posts", "fans"
 end
