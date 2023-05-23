@@ -3,6 +3,8 @@
 <%= render @athlete %>
 
 <div>
+  <%= link_to "subscribe", new_association_path(athlete_id: @athlete.id) %>
+
   <%= link_to "Edit this athlete", edit_athlete_path(@athlete) %> |
   <%= link_to "Back to athletes", athletes_path %>
 

@@ -39,12 +39,17 @@
     </div>
   <% end %>
 
-    <div class="">
-      <%= form.label :image, class:"" %>
-      <%= form.file_field :image1, class:"" %>
-    </div>
+<div class="image-upload">
+   <label for="file-input">
+     <span class="bi bi-check"></span>
+   </label>
+   <%= form.file_field :image1, id:"file-input" %>
+</div>
 
-
+<div>
+    <%= form.label :file %>
+    <%= form.file_field :file %>
+</div>
 
 <div class="container-fluid text-end m-2 p-2"> 
   <button type="submit" class="btn btn-primary">
@@ -53,3 +58,12 @@
 </div>
 
 <% end %>
+
+<style>
+.image-upload > input {
+   display: none;
+}
+.image-upload > label {
+  cursor:pointer;
+}
+</style>

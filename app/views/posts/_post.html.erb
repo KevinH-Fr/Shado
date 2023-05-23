@@ -1,33 +1,13 @@
 <div id="<%= dom_id post %>">
- <%
-=begin%>
-  <p>
-    <strong>Title:</strong>
-    <%= post.title %>
-  </p>
 
-  <p>
-    <strong>Location:</strong>
-    <%= post.location %>
-  </p>
- 
-<%
-=end%>
   <p>
     <strong>Content:</strong>
     <%= post.content %>
   </p>
 
-<%
-=begin%>
-   <p>
-    <strong>Athlete:</strong>
-    <%= post.athlete_id %>
-  </p> 
-<%
-=end%>
-
-  <%= image_tag(post.image1, class:"img-fluid rounded") if post.image1.present? %> 
-
+  <div class="card">  
+    <%= image_tag(post.image1, class:"img-fluid rounded") if post.image1.present? %> 
+    <%= video_tag(url_for(post.file), class: "bg-primary p-2") if post.file.present? %>
+  </div>
 
 </div>

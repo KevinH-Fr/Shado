@@ -1,14 +1,27 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Athletes</h1>
+<h1>Athletes suivis</h1>
+
+<div id="athletes">
+  <% @athletes_suivis.each do |athlete| %>
+    <%= render athlete %>
+    <p>
+      <%= link_to "Show this athlete", athlete %>
+      <%= link_to "subscribe", new_association_path(athlete_id: athlete) %>
+    </p>
+  <% end %>
+</div>
+
+<hr>
+
+<h1>Tous les athletes</h1>
 
 <div id="athletes">
   <% @athletes.each do |athlete| %>
     <%= render athlete %>
     <p>
       <%= link_to "Show this athlete", athlete %>
+      <%= link_to "subscribe", new_association_path(athlete_id: athlete) %>
     </p>
   <% end %>
 </div>
-
-<%= link_to "New athlete", new_athlete_path %>
