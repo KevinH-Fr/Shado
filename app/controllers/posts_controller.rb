@@ -3,11 +3,14 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-
-    @fan = Fan.where(user_id: current_user.id).first
-    @athlete = Athlete.find(2)
-    @posts_suivis = @athlete.posts
-
+    @fan = Fan.find_by(user_id: current_user.id)
+    
+    if @fan
+      @athletes = @fan.athletes
+      @posts_suivis = Post.where(athlete_id: @athletes.pluck(:id))
+    else
+      @posts_suivis = []
+    end
   end
 
   def show

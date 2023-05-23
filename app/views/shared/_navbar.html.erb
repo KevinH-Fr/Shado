@@ -23,10 +23,12 @@
   <span class="textnavbar"> Subscriptions  </span>
 <% end %>  
 
-<%= link_to(root_path, class:"navlink") do %>
-  <i class="bi bi-person iconsizenavbar"></i>
-  <span class="textnavbar "> My Profile  </span>
-<% end %>  
+<% if current_user.present? %>
+  <%= link_to(user_path(current_user.id), class:"navlink") do %>
+    <i class="bi bi-person iconsizenavbar"></i>
+    <span class="textnavbar "> My Profile  </span>
+  <% end %>  
+<% end %>
 
 <%= link_to(root_path, class:"navlink") do %>
   <i class="bi bi-clipboard2-data iconsizenavbar"></i>
@@ -36,8 +38,5 @@
 <%= link_to(new_post_path, class:"navlink navnewpost") do %>
   <span> New Post </span>
 <% end %>  
-
-
- <%= button_to "", destroy_user_session_path, method: :delete, class: "fa-solid fa-right-from-bracket btn btn-danger"  %>
 
 
