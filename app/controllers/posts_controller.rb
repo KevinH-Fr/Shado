@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_post, only: %i[ show edit update destroy upvote downvote ]
 
   def index
     @posts = Post.all
@@ -14,6 +14,44 @@ class PostsController < ApplicationController
   end
 
   def show
+  end
+
+  def upvote
+    if current_user.voted_up_on? @post 
+      @post.unvote_by current_user
+    else 
+      @post.upvote_by current_user
+    end
+    
+    respond_to do |format| 
+      format.html do 
+        redirect_to @post
+      end
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(@post, 
+          partial: "posts/post",
+          locals: {post: @post })
+      end
+    end
+  end
+
+  def downvote
+    if current_user.voted_down_on? @post 
+      @post.unvote_by current_user
+    else 
+      @post.downvote_by current_user
+    end
+    
+    respond_to do |format| 
+      format.html do 
+        redirect_to @post
+      end
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(@post, 
+          partial: "posts/post",
+          locals: {post: @post })
+      end
+    end
   end
 
   def new

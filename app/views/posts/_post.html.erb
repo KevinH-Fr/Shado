@@ -22,4 +22,9 @@
       <%= link_to "", post_path(post), class: "btn btn-sm btn-primary fa-solid fa-eye m-1" %>
     </div>
 
+  <%= post.votes_for.up.size %>
+
+  <%= button_to "upvote", upvote_post_path(post), method: :patch  %>
+  <%= button_to "downvote", downvote_post_path(post), method: :patch  %>
+
 </div>

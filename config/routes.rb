@@ -22,7 +22,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts
+  resources :posts do 
+    member do 
+      patch :upvote
+      patch :downvote
+    end
+  end
 
   root "home#index"
 end
