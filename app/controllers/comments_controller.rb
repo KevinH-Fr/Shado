@@ -19,8 +19,7 @@ class CommentsController < ApplicationController
     def destroy
       @comment = Comment.find(params[:id])
       if @comment.destroy
-        redirect_to @commentable unless @commentable.is_a?(Comment)
-        redirect_to @commentable.find_top_parent if @commentable.is_a?(Comment)
+        redirect_to @commentable 
         flash[:notice] = 'Comment deleted'
       else
         redirect_to @commentable, alert: 'Something went wrong'
@@ -30,7 +29,9 @@ class CommentsController < ApplicationController
     private
   
     # not very nice, in my opinion
-    # def set_commentable
+     def set_commentable
+        @commentable = Post.find(params[:post_id])
+     
     #   if params[:inbox_id].present?
     #     @commentable = Inbox.find(params[:inbox_id])
     #   elsif params[:comment_id]
@@ -38,7 +39,7 @@ class CommentsController < ApplicationController
     #   else
     #     "SOME ERROR"
     #   end
-    # end
+    end
   
     def comment_params
       params.require(:comment).permit(:body).merge(user: current_user)

@@ -1,3 +1,17 @@
-<%= comment.body %>
-<%= comment.created_at %>
-<%= link_to user_name(comment.user), comment.user %>
+
+
+<% if comment.deleted_at.present? %>
+    comment has been deleted
+
+<% else %>
+    
+    <%= comment.body %>
+    <%= comment.created_at %>
+    <%= link_to user_name(comment.user), comment.user %>
+    <%= link_to "delete comment", [@commentable, comment], method: :delete  %>
+
+<% end %>
+
+<hr>
+
+<%= render comment.comments %>

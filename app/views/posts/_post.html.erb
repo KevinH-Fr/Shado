@@ -34,7 +34,15 @@
 
     <hr>
 
-    comments: <%= @comments.count %>
-    <%= render @comments %>
+
+    <% if @comments.present? %>
+      comments: <%= @comments.count %>
+      <%= render @comments %>
+    <% end %>
+
+
+    <%= link_to "add comment", new_post_comment_path(@commentable, @comment) %>
+
+
 
 </div>
