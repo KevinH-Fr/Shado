@@ -23,7 +23,9 @@ Rails.application.routes.draw do
   end
 
   resources :posts do 
-    resources :comments, only: %i[new create destroy]
+    resources :comments, only: %i[new create destroy] do
+      delete :destroy_comment, on: :member
+    end
     member do 
       patch :upvote
       patch :downvote

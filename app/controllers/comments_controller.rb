@@ -19,8 +19,7 @@ class CommentsController < ApplicationController
     def destroy
       @comment = Comment.find(params[:id])
       if @comment.destroy
-        redirect_to @commentable 
-        flash[:notice] = 'Comment deleted'
+        redirect_to @commentable, notice: 'Comment deleted'
       else
         redirect_to @commentable, alert: 'Something went wrong'
       end
