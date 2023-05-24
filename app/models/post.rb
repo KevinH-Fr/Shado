@@ -3,6 +3,9 @@ class Post < ApplicationRecord
   has_one_attached :image1
   has_one_attached :file
 
+  has_many :comments, as: :commentable
+
+
   acts_as_votable
 
   def upvote!(user)
@@ -20,5 +23,7 @@ class Post < ApplicationRecord
       downvote_by user
     end
   end
+
+  
 
 end
