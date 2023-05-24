@@ -2,15 +2,17 @@
 
 <h1>Athletes suivis</h1>
 
-<div id="athletes">
-  <% @athletes_suivis.each do |athlete| %>
-    <%= render athlete %>
-    <p>
-      <%= link_to "Show this athlete", athlete %>
-      <%= link_to "subscribe", new_association_path(athlete_id: athlete) %>
-    </p>
-  <% end %>
-</div>
+<% if @athletes_suivis.present? %>
+  <div id="athletes">
+    <% @athletes_suivis.each do |athlete| %>
+      <%= render athlete %>
+      <p>
+        <%= link_to "Show this athlete", athlete %>
+        <%= link_to "subscribe", new_association_path(athlete_id: athlete) %>
+      </p>
+    <% end %>
+  </div>
+<% end %>
 
 <hr>
 

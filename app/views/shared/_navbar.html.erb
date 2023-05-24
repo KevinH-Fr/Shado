@@ -1,42 +1,43 @@
+<nav class="">
+ 
+  <div class="m-2 p-2 text-center" >  
+    <%= link_to image_tag("shado-logo.png", width: 100), root_path, class: "" %>
+  </div>
 
-<div class="m-2 p-2 text-center" >  
-  <%= link_to image_tag("shado-logo.png", width:50), root_path, class: "" %>
-</div>
+  <%= link_to(root_path, class:"navlink") do %>
+    <i class="bi bi-house icon-navbar middled"></i>
+    <span class="text-navbar middled"> Home  </span>
+  <% end %> 
 
-<%= link_to(root_path, class:"navlink") do %>
-  <i class="bi bi-house iconsizenavbar"></i>
-  <span class="textnavbar"> Home  </span>
-<% end %> 
-
-<%= link_to(posts_path, class:"navlink") do %>
-  <i class="bi bi-people iconsizenavbar"></i>
-  <span class="textnavbar"> Fan Base  </span>
-<% end %>  
-
-<%= link_to(root_path, class:"navlink") do %>
-  <i class="bi bi-bell iconsizenavbar"></i>
-  <span class="textnavbar"> Notifications  </span>
-<% end %>  
-
-<%= link_to(athletes_path, class:"navlink") do %>
-  <i class="bi bi-star iconsizenavbar"></i>
-  <span class="textnavbar"> Subscriptions  </span>
-<% end %>  
-
-<% if current_user.present? %>
-  <%= link_to(user_path(current_user.id), class:"navlink") do %>
-    <i class="bi bi-person iconsizenavbar"></i>
-    <span class="textnavbar "> My Profile  </span>
+  <%= link_to(posts_path, class:"navlink") do %>
+    <i class="bi bi-people icon-navbar middled"></i>
+    <span class="text-navbar middled"> Fan Base  </span>
   <% end %>  
-<% end %>
 
-<%= link_to(root_path, class:"navlink") do %>
-  <i class="bi bi-clipboard2-data iconsizenavbar"></i>
-  <span class="textnavbar"> Dashboard  </span>
-<% end %>  
+  <%= link_to(root_path, class:"navlink") do %>
+    <i class="bi bi-bell icon-navbar middled"></i>
+    <span class="text-navbar middled"> Notifications  </span>
+  <% end %>  
 
-<%= link_to(new_post_path, class:"navlink navnewpost") do %>
-  <span> New Post </span>
-<% end %>  
+  <%= link_to(athletes_path, class:"navlink") do %>
+    <i class="bi bi-star icon-navbar middled"></i>
+    <span class="text-navbar middled"> Subscriptions  </span>
+  <% end %>  
 
+  <% if current_user.present? %>
+    <%= link_to(user_path(current_user.id), class:"navlink") do %>
+      <i class="bi bi-person icon-navbar middled"></i>
+      <span class="text-navbar middled"> My Profile  </span>
+    <% end %>  
+  <% end%>
 
+  <%= link_to(root_path, class:"navlink") do %>
+    <i class="bi bi-clipboard2-data icon-navbar middled"></i>
+    <span class="text-navbar middled"> Dashboard  </span>
+  <% end %>  
+
+  <%= link_to(new_post_path, class:"navlink nav-newpost") do %>
+    <span> New Post </span>
+  <% end %>  
+
+</nav>

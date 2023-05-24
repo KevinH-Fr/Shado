@@ -5,7 +5,7 @@ class AthletesController < ApplicationController
     @athletes = Athlete.all
 
     @fan = Fan.where(user_id: current_user.id).first
-    @athletes_suivis = @fan.athletes
+    @athletes_suivis = @fan.athletes if @fan.present?
 
   end
 
@@ -20,6 +20,13 @@ class AthletesController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html
+      format.turbo_stream do  
+        render turbo_stream: turbo_stream.update(@athlete, partial: "athletes/form", 
+          locals: {athlete: @athlete})
+      end
+    end
   end
 
   def create

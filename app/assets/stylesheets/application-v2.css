@@ -1,0 +1,64 @@
+/*  DIMENSIONS */
+
+.full-height{
+    height: 100vh;
+}
+
+
+/* POSITIONS */
+
+.middled{
+    vertical-align: middle;
+}
+
+.flex-element{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.overflow{
+ 
+}
+/* NAVBAR */ 
+
+
+.navlink{
+    margin: .3em;
+    padding: .5em;
+    font-size:x-large;
+    border-radius: 20px;
+    display: block;
+    text-decoration: none;
+    color: grey;
+    min-width: 220px;
+}
+ 
+.navlink:hover{ 
+    background-color: #E5F7FD;
+    color: #00AFF0;
+}
+
+.nav-newpost{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: x-large;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #00AFF0;
+    margin: .5em;
+    margin-top: .5em;
+    padding: .5em;
+    border-radius: 30px;
+    min-width: 220px;
+}
+
+.icon-navbar{
+    font-size: 1.2em;
+}
+
+.text-navbar{
+    margin: .2em;
+}
+

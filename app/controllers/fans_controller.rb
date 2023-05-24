@@ -1,33 +1,39 @@
 class FansController < ApplicationController
   before_action :set_fan, only: %i[ show edit update destroy ]
 
-  # GET /fans or /fans.json
   def index
     @fans = Fan.all
   end
 
-  # GET /fans/1 or /fans/1.json
   def show
     @user = User.find(@fan.user_id)
   end
 
-  # GET /fans/new
   def new
     @fan = Fan.new
   end
 
-  # GET /fans/1/edit
   def edit
+    respond_to do |format|
+      format.html
+      format.turbo_stream do  
+        render turbo_stream: turbo_stream.update(@fan, partial: "fans/form", 
+          locals: {fan: @fan})
+      end
+    end
   end
 
-  # POST /fans or /fans.json
   def create
     @fan = Fan.new(fan_params)
 
     respond_to do |format|
       if @fan.save
-        format.html { redirect_to fan_url(@fan), notice: "Fan was successfully created." }
-        format.json { render :show, status: :created, location: @fan }
+        format.turbo_stream do
+          flash.now[:notice] = "le fan #{@fan.id} a bien été ajouté"
+          render turbo_stream: 
+            turbo_stream.update("fan", partial: "fans/fan",
+              locals: {fan: @fan })
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @fan.errors, status: :unprocessable_entity }
