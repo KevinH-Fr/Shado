@@ -22,9 +22,29 @@
       <%= link_to "", post_path(post), class: "btn btn-sm btn-primary fa-solid fa-eye m-1" %>
     </div>
 
-  <%= post.votes_for.up.size %>
 
-  <%= button_to "upvote", upvote_post_path(post), method: :patch  %>
-  <%= button_to "downvote", downvote_post_path(post), method: :patch  %>
+<div>
+  cached_votes_total: <%= post.cached_votes_total %> <br> 
+  cached_votes_score: <%= post.cached_votes_score %> <br> 
+  cached_votes_up: <%= post.cached_votes_up %> <br> 
+  cached_down_up: <%= post.cached_votes_down %> <br> 
+
+</div>
+
+
+  <%#= button_to upvote_label(post, current_user), upvote_post_path(post), 
+        method: :patch, 
+        style: upvote_label_styles(post, current_user)  %>
+  <%#= button_to downvote_label(post, current_user), downvote_post_path(post), method: :patch, 
+        style: downvote_label_styles(post, current_user)  %>
+
+  
+    <%= button_to upvote_label(post, current_user), vote_post_path(post, type: :upvote), 
+        method: :patch, 
+        style: upvote_label_styles(post, current_user)  %>
+  <%= button_to downvote_label(post, current_user), vote_post_path(post, type: :downvote), 
+        method: :patch, 
+        style: downvote_label_styles(post, current_user)  %>
+
 
 </div>

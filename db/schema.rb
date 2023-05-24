@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_24_120409) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_24_124242) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -75,6 +75,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_120409) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "fan_id"
+    t.integer "cached_votes_total", default: 0
+    t.integer "cached_votes_score", default: 0
+    t.integer "cached_votes_up", default: 0
+    t.integer "cached_votes_down", default: 0
+    t.integer "cached_weighted_score", default: 0
+    t.integer "cached_weighted_total", default: 0
+    t.float "cached_weighted_average", default: 0.0
     t.index ["athlete_id"], name: "index_posts_on_athlete_id"
     t.index ["fan_id"], name: "index_posts_on_fan_id"
   end

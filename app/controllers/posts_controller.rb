@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy upvote downvote ]
+  before_action :set_post, only: %i[ show edit update destroy upvote downvote vote]
 
   def index
     @posts = Post.all
@@ -13,45 +13,41 @@ class PostsController < ApplicationController
     end
   end
 
+  def vote 
+
+    case params[:type]
+    when 'upvote'
+      @post.upvote!(current_user)
+    when 'downvote'
+      @post.downvote!(current_user)
+    else 
+      return redirect_to request.url, alert: "no such vote type"
+    end
+
+    respond_to do |format| 
+      format.html do 
+        redirect_to @post
+      end
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(@post, 
+          partial: "posts/post",
+          locals: {post: @post })
+      end
+    end
+
+  end 
+
   def show
   end
 
   def upvote
-    if current_user.voted_up_on? @post 
-      @post.unvote_by current_user
-    else 
-      @post.upvote_by current_user
-    end
+    @post.upvote!(current_user)
     
-    respond_to do |format| 
-      format.html do 
-        redirect_to @post
-      end
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(@post, 
-          partial: "posts/post",
-          locals: {post: @post })
-      end
-    end
   end
 
   def downvote
-    if current_user.voted_down_on? @post 
-      @post.unvote_by current_user
-    else 
-      @post.downvote_by current_user
-    end
+    @post.downvote!(current_user)
     
-    respond_to do |format| 
-      format.html do 
-        redirect_to @post
-      end
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(@post, 
-          partial: "posts/post",
-          locals: {post: @post })
-      end
-    end
   end
 
   def new
