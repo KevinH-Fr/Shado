@@ -7,7 +7,7 @@ module AthletesHelper
         end
     end
 
-    def athlete_full_name
+    def athlete_full_name(user_athlete)
         Athlete.find(user_athlete).name
     end
 end

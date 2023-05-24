@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
+  get 'dashboard/index'
   resources :associations
 
   devise_for :users, controllers: { registrations: 'users/registrations' }

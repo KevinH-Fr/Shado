@@ -13,13 +13,9 @@
 
 .flex-element{
     display: flex;
-    justify-content: space-between;
     align-items: center; 
 }
 
-.overflow{
- 
-}
 /* NAVBAR */ 
 
 
@@ -62,3 +58,12 @@
     margin: .2em;
 }
 
+
+/*  CARDS */
+
+.card-main{
+    margin: .5em;
+    margin-bottom: 1em;
+    padding: .5em;
+    
+}

@@ -26,10 +26,11 @@
     <%= form.text_area :content, placeholder: "Compose new post... ", class: "form-control createpostdesign" %>
   </div>
 
-  <div>
-    <%# form.label :athlete_id, style: "display: block" %>
+  <% if post.persisted? %>
+    <%= form.hidden_field :athlete_id %>
+  <% else %>
     <%= form.hidden_field :athlete_id, value: @athlete.id %>
-  </div>
+  <% end %>
 
   <%# tempo alternative athlete ou fan  %>
   <% if @fan.present? %>

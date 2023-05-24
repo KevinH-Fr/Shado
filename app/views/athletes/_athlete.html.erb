@@ -1,4 +1,4 @@
-<div id="<%= dom_id athlete %>">
+<div class="card card-main" id="<%= dom_id athlete %>">
 
   <h4> profile athlete  </h4>
 
@@ -16,6 +16,11 @@
     <strong>Bio:</strong>
     <%= athlete.bio %>
   </p>
+
+  <div class="flex-element m-1">
+    <%= link_to "", athlete_path(athlete), class: "btn btn-sm btn-primary fa-solid fa-eye m-1" %>
+    <%= link_to "", new_association_path(athlete_id: athlete), class: "btn btn-sm btn-warning fa-solid fa-star m-1" %>
+  </div>
 
 
 </div>

@@ -1,6 +1,6 @@
 <nav class="">
  
-  <div class="m-2 p-2 text-center" >  
+  <div class="mb-4 text-center" >  
     <%= link_to image_tag("shado-logo.png", width: 100), root_path, class: "" %>
   </div>
 
@@ -14,7 +14,7 @@
     <span class="text-navbar middled"> Fan Base  </span>
   <% end %>  
 
-  <%= link_to(root_path, class:"navlink") do %>
+  <%= link_to(notifications_index_path, class:"navlink") do %>
     <i class="bi bi-bell icon-navbar middled"></i>
     <span class="text-navbar middled"> Notifications  </span>
   <% end %>  
@@ -31,7 +31,7 @@
     <% end %>  
   <% end%>
 
-  <%= link_to(root_path, class:"navlink") do %>
+  <%= link_to(dashboard_index_path, class:"navlink") do %>
     <i class="bi bi-clipboard2-data icon-navbar middled"></i>
     <span class="text-navbar middled"> Dashboard  </span>
   <% end %>  

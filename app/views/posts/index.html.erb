@@ -5,19 +5,15 @@
 <div id="posts">
   <% @posts_suivis.each do |post| %>
     <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
   <% end %>
 </div>
 
-<h1>Tous les posts</h1>
+
+
+<h1 class="mt-4">Tous les posts</h1>
 
 <div id="posts">
   <% @posts.each do |post| %>
     <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
   <% end %>
 </div>

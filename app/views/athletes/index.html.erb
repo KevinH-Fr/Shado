@@ -6,10 +6,6 @@
   <div id="athletes">
     <% @athletes_suivis.each do |athlete| %>
       <%= render athlete %>
-      <p>
-        <%= link_to "Show this athlete", athlete %>
-        <%= link_to "subscribe", new_association_path(athlete_id: athlete) %>
-      </p>
     <% end %>
   </div>
 <% end %>
@@ -21,9 +17,5 @@
 <div id="athletes">
   <% @athletes.each do |athlete| %>
     <%= render athlete %>
-    <p>
-      <%= link_to "Show this athlete", athlete %>
-      <%= link_to "subscribe", new_association_path(athlete_id: athlete) %>
-    </p>
   <% end %>
 </div>
