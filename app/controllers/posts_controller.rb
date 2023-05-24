@@ -4,6 +4,8 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @fan = Fan.find_by(user_id: current_user.id)
+    @comment = Comment.new
+
     
     if @fan
       @athletes = @fan.athletes
