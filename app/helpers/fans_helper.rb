@@ -7,7 +7,7 @@ module FansHelper
         end
     end
 
-    def fan_full_name
+    def fan_full_name(user_fan)
         Fan.find(user_fan).pseudo
     end
 end

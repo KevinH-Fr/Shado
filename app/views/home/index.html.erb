@@ -1,11 +1,9 @@
 
 <h1>Home</h1>
 
+Bienvenue 
+<%= user_name(current_user.id) %>
 
-<% if user_fan.present? %>
-    Vous êtes connecté(e) en tant que Fan
-<% end %>
+<hr>
 
-<% if user_athlete.present? %>
-    Vous êtes connecté(e) en tant que Athlete
-<% end %>
+Vous êtes connecté(e) en tant que <%= user_role(current_user.id) %>

@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy upvote downvote vote]
 
   def index
-    @posts = Post.all
+    @posts = Post.non_exclusif
     @fan = Fan.find_by(user_id: current_user.id)
     @comment = Comment.new
 
@@ -42,6 +42,7 @@ class PostsController < ApplicationController
   def show
     @commentable = @post
     @comments = @post.comments
+    @comment = Comment.new
   end
 
   def upvote
@@ -110,6 +111,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :location, :content, :athlete_id, :fan_id, :image1, :file)
+      params.require(:post).permit(:title, :location, :content, :athlete_id, :fan_id, :image1, :file, :exclusif)
     end
 end

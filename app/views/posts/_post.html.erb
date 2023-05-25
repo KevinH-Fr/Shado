@@ -10,6 +10,11 @@
     <%= post.content %>
   </p>
 
+  <p>
+    <strong>exclusif:</strong>
+    <%= post.exclusif %>
+  </p>
+
     <%= image_tag(post.image1, class:"img-fluid rounded") if post.image1.present? %> 
     <%= video_tag(url_for(post.file), controls: true, class: "p-2") if post.file.present? %>
 
@@ -24,7 +29,6 @@
 
     <hr>  
 
-  
     <%= button_to upvote_label(post, current_user), vote_post_path(post, type: :upvote), 
         method: :patch, 
         style: upvote_label_styles(post, current_user)  %>
@@ -35,11 +39,30 @@
     <hr>
 
 
-    <% if @comments.present? %>
-      comments: <%= @comments.count %>
-      <%= render @comments %>
-    <% end %>
+<%
+=begin%>
+     <% if comments_related(post).present? %>
+      comments: <%= comments_related(post).count %> <br>
+      <%#= render @comments %>
 
+            <% comments_related(post).each do |comment| %>
+              <%= comment.body %>
+              <small> <%= time_ago_in_words(comment.created_at) %> ago </small>
+
+              <%= link_to user_name(comment.user), comment.user %>
+              <%= button_to 'Delete', [post, comment], method: :delete %>
+              
+              <%= link_to "delete comment", [post, comment], 
+                method: :delete, class:"btn btn-sm btn-outline-danger fa-solid fa-trash"  %>
+
+            <% end %>
+    <% end %> 
+<%
+=end%>
+      <% @comments = comments_related(post) %>
+      <% if @comments.present? %>
+      <%= render @comments %>
+      <% end %>
     <%= link_to "add comment", new_post_comment_path(post, @comment) %>
 
 

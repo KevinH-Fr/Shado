@@ -32,4 +32,8 @@ module PostsHelper
             "background-color: grey;"
         end 
     end
+    
+    def comments_related(post)
+        post.comments
+    end
 end

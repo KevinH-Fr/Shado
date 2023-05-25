@@ -26,6 +26,11 @@
     <%= form.text_area :content, placeholder: "Compose new post... ", class: "form-control createpostdesign" %>
   </div>
 
+  <div>
+    <%= form.label :exclusif %>
+    <%= form.check_box :exclusif %>
+  </div>
+
   <% if post.persisted? %>
     <%= form.hidden_field :athlete_id %>
   <% else %>

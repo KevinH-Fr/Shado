@@ -4,15 +4,9 @@
     <% if current_user.present? %>
         <%= button_to "", destroy_user_session_path, method: :delete, class: "fa-solid fa-right-from-bracket btn btn-danger"  %>
 
-        <% if user_athlete.present? %>
-            Athlete: <%= athlete_full_name %>
-        <% end %>
-        
-        <% if user_fan.present? %>
-            Fan: <%= fan_full_name %>
-        <% end %>
-          <%= user_athlete %>
-      
+      <%= user_role(current_user.id) %>
+
+      <%= user_name(current_user.id) %>
 
     <% else %>
         <%= link_to '', new_user_session_path, class: "fa-solid fa-user-lock btn btn-warning" %>

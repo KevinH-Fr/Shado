@@ -5,7 +5,8 @@ class Post < ApplicationRecord
 
   has_many :comments, as: :commentable
 
-
+  scope :non_exclusif, -> { where("exclusif = ?", false) }
+  
   acts_as_votable
 
   def upvote!(user)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_24_143933) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_24_233838) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -95,6 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_24_143933) do
     t.integer "cached_weighted_score", default: 0
     t.integer "cached_weighted_total", default: 0
     t.float "cached_weighted_average", default: 0.0
+    t.boolean "exclusif"
     t.index ["athlete_id"], name: "index_posts_on_athlete_id"
     t.index ["fan_id"], name: "index_posts_on_fan_id"
   end
