@@ -1,27 +1,23 @@
 class AssociationsController < ApplicationController
   before_action :set_association, only: %i[ show edit update destroy ]
 
-  # GET /associations or /associations.json
   def index
     @associations = Association.all
   end
 
-  # GET /associations/1 or /associations/1.json
   def show
   end
 
-  # GET /associations/new
   def new
     @association = Association.new
     @athlete = Athlete.find(params[:athlete_id])
+    @campaigns = @athlete.campaigns
   end
 
-  # GET /associations/1/edit
   def edit
     @athlete = Athlete.find(@association.athlete_id)
   end
 
-  # POST /associations or /associations.json
   def create
     @association = Association.new(association_params)
 
@@ -36,7 +32,6 @@ class AssociationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /associations/1 or /associations/1.json
   def update
     respond_to do |format|
       if @association.update(association_params)
@@ -49,7 +44,6 @@ class AssociationsController < ApplicationController
     end
   end
 
-  # DELETE /associations/1 or /associations/1.json
   def destroy
     @association.destroy
 
@@ -60,12 +54,10 @@ class AssociationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_association
       @association = Association.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def association_params
       params.require(:association).permit(:athlete_id, :fan_id)
     end

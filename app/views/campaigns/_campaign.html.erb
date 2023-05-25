@@ -1,0 +1,42 @@
+<div id="<%= dom_id campaign %>">
+  <p>
+    <strong>Title:</strong>
+    <%= campaign.title %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= campaign.description %>
+  </p>
+
+  <p>
+    <strong>Periodicity:</strong>
+    <%= campaign_label(campaign.periodicity) %>
+  </p>
+
+  <p>
+    <strong>Subscription:</strong>
+    <%= campaign.subscription %>
+  </p>
+
+  <p>
+    <strong>Target:</strong>
+    <%= campaign.target %>
+  </p>
+
+  <p>
+    <strong>Start:</strong>
+    <%= campaign.start %>
+  </p>
+
+  <p>
+    <strong>End:</strong>
+    <%= campaign.end %>
+  </p>
+
+  <p>
+    <strong>Athlete:</strong>
+    <%= campaign.athlete_id %>
+  </p>
+
+</div>

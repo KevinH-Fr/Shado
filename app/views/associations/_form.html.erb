@@ -15,24 +15,24 @@
 
   <div>
     <h5> Athlete </h5>
-    <%= render @athlete %>
+    <%= render @athlete  %>
   </div>
 
   <div>
-    <% if @athlete.persisted? %>
+    <h5> Campagne </h5>
+    <%= render @campaigns  %>
+  </div>
+
+
+  <div>
+    <% if @association.persisted? %>
       <%= form.hidden_field :athlete_id %>
-    <% else %>
-      <%= form.hidden_field :athlete_id, value: @athlete.id %>
-    <% end %>
-
-  </div>
-
-  <div>
-    <% if @athlete.persisted? %>
       <%= form.hidden_field :fan_id %>
     <% else %>
+      <%= form.hidden_field :athlete_id, value: @athlete.id %>
       <%= form.hidden_field :fan_id, value: user_fan %>
     <% end %>
+
   </div>
 
 

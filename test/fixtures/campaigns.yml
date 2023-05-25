@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  periodicity: false
+  subscription: 9.99
+  target: 1
+  start: 2023-05-26
+  end: 2023-05-26
+  athlete: one
+
+two:
+  title: MyString
+  description: MyText
+  periodicity: false
+  subscription: 9.99
+  target: 1
+  start: 2023-05-26
+  end: 2023-05-26
+  athlete: two
