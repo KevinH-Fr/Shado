@@ -3,7 +3,8 @@ class Post < ApplicationRecord
   has_one_attached :image1
   has_one_attached :file
 
-  has_many :comments, as: :commentable
+
+  has_many :comments, -> { order(created_at: :desc) }, as: :commentable, dependent: :destroy, inverse_of: :commentable
 
   scope :non_exclusif, -> { where("exclusif = ?", false) }
   

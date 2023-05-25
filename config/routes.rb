@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  resources :friends
   get 'notifications/index'
   get 'dashboard/index'
   resources :associations
@@ -22,10 +24,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts do 
-    resources :comments, only: %i[new create destroy] do
-      delete :destroy_comment, on: :member
-    end
+  resources :comments, only: [] do
+    resources :comments, only: %i[new create destroy], module: :comments
+  end
+
+  resources :posts do
+    resources :comments, only: %i[new create destroy], module: :posts
+
     member do 
       patch :upvote
       patch :downvote

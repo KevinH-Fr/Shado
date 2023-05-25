@@ -15,20 +15,21 @@
     <%= post.exclusif %>
   </p>
 
-    <%= image_tag(post.image1, class:"img-fluid rounded") if post.image1.present? %> 
-    <%= video_tag(url_for(post.file), controls: true, class: "p-2") if post.file.present? %>
+  <%= image_tag(post.image1, class:"img-fluid rounded") if post.image1.present? %> 
+  <%= video_tag(url_for(post.file), controls: true, class: "p-2") if post.file.present? %>
 
+  <div class="flex-element m-1">
+    <%= button_to "", post, method: :delete, class: "btn btn-sm btn-danger fa-solid fa-trash m-1" %>
+    <%= link_to "", edit_post_path(post), 
+          class: "btn btn-sm btn-secondary fa-solid fa-pen-to-square m-1", 
+          method: :post %>
+    <%= link_to "", post_path(post), class: "btn btn-sm btn-primary fa-solid fa-eye m-1" %>
+  </div>
 
-    <div class="flex-element m-1">
-      <%= button_to "", post, method: :delete, class: "btn btn-sm btn-danger fa-solid fa-trash m-1" %>
-      <%= link_to "", edit_post_path(post), 
-            class: "btn btn-sm btn-secondary fa-solid fa-pen-to-square m-1", 
-            method: :post %>
-      <%= link_to "", post_path(post), class: "btn btn-sm btn-primary fa-solid fa-eye m-1" %>
-    </div>
+  <hr>  
 
-    <hr>  
-
+  <div>
+  
     <%= button_to upvote_label(post, current_user), vote_post_path(post, type: :upvote), 
         method: :patch, 
         style: upvote_label_styles(post, current_user)  %>
@@ -36,34 +37,17 @@
         method: :patch, 
         style: downvote_label_styles(post, current_user)  %>
 
-    <hr>
 
+      <% if @commentable.present? %>
 
-<%
-=begin%>
-     <% if comments_related(post).present? %>
-      comments: <%= comments_related(post).count %> <br>
-      <%#= render @comments %>
+       <%= render template: 'comments/new' %>
+      <% else %>
 
-            <% comments_related(post).each do |comment| %>
-              <%= comment.body %>
-              <small> <%= time_ago_in_words(comment.created_at) %> ago </small>
-
-              <%= link_to user_name(comment.user), comment.user %>
-              <%= button_to 'Delete', [post, comment], method: :delete %>
-              
-              <%= link_to "delete comment", [post, comment], 
-                method: :delete, class:"btn btn-sm btn-outline-danger fa-solid fa-trash"  %>
-
-            <% end %>
-    <% end %> 
-<%
-=end%>
-      <% @comments = comments_related(post) %>
-      <% if @comments.present? %>
-      <%= render @comments %>
+      nb comments:<%= post.comments.count %>
+      <%= link_to "Go to comments", post_path(post) %>
+      <%= link_to "Add comment", new_post_comment_path(post, @comment) %> 
       <% end %>
-    <%= link_to "add comment", new_post_comment_path(post, @comment) %>
 
+  </div>
 
 </div>

@@ -1,5 +1,34 @@
 <p style="color: green"><%= notice %></p>
 
+<%= Time.now %>
+
+
 <%= render @post %>
 
+
 <hr>
+
+      <%# @comments = comments_related(@post) %>
+      <%# if @comments.present? %>
+    
+      <%# end %>
+
+    <%#= link_to "add comment", new_post_comment_path(@post, @comment) %>
+    
+<%
+=begin%>
+     <div id="comments">
+        <%= render @comments %>
+    </div>
+    
+    <%= link_to "add comment", new_post_comment_path(@post, @comment) %>
+
+
+    <hr>
+
+ 
+<%
+=end%>
+
+
+<%= render @comments %>

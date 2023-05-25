@@ -17,6 +17,10 @@ class PostsController < ApplicationController
 
   def vote 
 
+    @commentable = @post
+    @comment = Comment.new
+    @comments = @post.comments
+
     case params[:type]
     when 'upvote'
       @post.upvote!(current_user)
@@ -41,8 +45,8 @@ class PostsController < ApplicationController
 
   def show
     @commentable = @post
-    @comments = @post.comments
     @comment = Comment.new
+    @comments = @post.comments
   end
 
   def upvote

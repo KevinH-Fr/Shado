@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
     before_action :set_commentable
-  
+
     def new
       @comment = Comment.new
     end
@@ -19,25 +19,27 @@ class CommentsController < ApplicationController
     def destroy
       @comment = Comment.find(params[:id])
       if @comment.destroy
-        redirect_to @commentable, notice: 'Comment deleted'
+        redirect_to @commentable unless @commentable.is_a?(Comment)
+        redirect_to @commentable.find_top_parent if @commentable.is_a?(Comment)
+        flash[:notice] = 'Comment deleted'
       else
         redirect_to @commentable, alert: 'Something went wrong'
       end
     end
+
   
     private
   
     # not very nice, in my opinion
      def set_commentable
-        @commentable = Post.find(params[:post_id])
-     
-    #   if params[:inbox_id].present?
-    #     @commentable = Inbox.find(params[:inbox_id])
-    #   elsif params[:comment_id]
-    #     @commentable = Comment.find(params[:comment_id])
-    #   else
-    #     "SOME ERROR"
-    #   end
+
+       if params[:post_id].present?
+         @commentable = Post.find(params[:post_id])
+       elsif params[:comment_id]
+         @commentable = Comment.find(params[:comment_id])
+       else
+         "SOME ERROR"
+       end
     end
   
     def comment_params
