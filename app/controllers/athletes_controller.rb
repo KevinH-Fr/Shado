@@ -5,7 +5,10 @@ class AthletesController < ApplicationController
     @athletes = Athlete.all
 
     @fan = Fan.where(user_id: current_user.id).first
-    @athletes_suivis = @fan.athletes if @fan.present?
+   # @athletes_suivis = @fan.athletes if @fan.present?
+
+   @athletes_suivis = @fan.athletes.distinct if @fan.present?
+
 
   end
 

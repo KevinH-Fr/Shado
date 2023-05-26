@@ -3,7 +3,7 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns or /campaigns.json
   def index
-    @athlete = Athlete.find(params[:id])
+    @athlete = Athlete.find(params[:athlete_id])
     @campaigns = @athlete.campaigns
   end
 

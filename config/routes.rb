@@ -4,11 +4,11 @@ Rails.application.routes.draw do
 
   resources :campaigns do
     member do
-      get 'athletes/:id/campaigns', to: 'campaigns#index', as: 'athlete_campaigns'
+    #  get 'athletes/:id/campaigns', to: 'campaigns#index', as: 'campaigns'
       get 'subscribe', to: 'subscriptions#new', as: 'new_subscription'
     end
-  end
-  
+  end 
+
   resources :friends
   get 'notifications/index'
   get 'dashboard/index'

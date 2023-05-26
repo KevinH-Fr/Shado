@@ -1,4 +1,4 @@
-<div id="<%= dom_id campaign %>">
+<div class="card card-main" id="<%= dom_id campaign %>">
   <p>
     <strong>Title:</strong>
     <%= campaign.title %>
@@ -25,18 +25,23 @@
   </p>
 
   <p>
-    <strong>Start:</strong>
-    <%= campaign.start %>
+    <strong>Periode:</strong>
+    <%= campaign.start %> | <%= campaign.end %>
   </p>
 
-  <p>
-    <strong>End:</strong>
-    <%= campaign.end %>
-  </p>
+    <%#= campaign.athlete_id %>
 
-  <p>
-    <strong>Athlete:</strong>
-    <%= campaign.athlete_id %>
-  </p>
+</div>
 
+
+<div> 
+
+
+   nb sub:<%= sub_count(campaign) %> <br> 
+
+   my subs : <br>
+
+   <% sub_current_fan(campaign, user_fan).each do |sub| %>
+    <%= link_to "Edit sub #{sub}" , subscription_path(sub) %>  <br>
+  <% end %> 
 </div>

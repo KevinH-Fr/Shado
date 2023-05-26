@@ -6,4 +6,6 @@ module CampaignsHelper
             "Ponctuelle"
         end
     end
+
+
 end

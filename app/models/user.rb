@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   acts_as_voter
 
+  has_one :fan
+  has_one :athlete
 
 
 end
