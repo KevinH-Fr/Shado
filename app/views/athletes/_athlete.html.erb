@@ -19,10 +19,10 @@
 
   <div class="flex-element m-1">
     <%= link_to "", athlete_path(athlete), class: "btn btn-sm btn-primary fa-solid fa-eye m-1" %>
-    <%= link_to "", new_association_path(athlete_id: athlete), class: "btn btn-sm btn-warning fa-solid fa-star m-1" %>
+    <%#= link_to "", new_association_path(athlete_id: athlete), class: "btn btn-sm btn-warning fa-solid fa-star m-1" %>
+    <%#= link_to "Voir campaigns", campaigns_path(athlete_id: athlete), class: "btn btn-sm btn-warning fa-solid fa-star m-1" %>
+  <%= link_to "Voir campaigns", athlete_campaigns_campaign_path(athlete), class: "btn btn-sm btn-warning fa-solid fa-star m-1" %>
+
   </div>
 
-
 </div>
-
-

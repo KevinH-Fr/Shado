@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_25_223548) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_26_102028) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -120,6 +120,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_25_223548) do
     t.index ["fan_id"], name: "index_posts_on_fan_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "campaign_id", null: false
+    t.integer "fan_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campaign_id"], name: "index_subscriptions_on_campaign_id"
+    t.index ["fan_id"], name: "index_subscriptions_on_fan_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -158,4 +167,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_25_223548) do
   add_foreign_key "fans", "users"
   add_foreign_key "posts", "athletes"
   add_foreign_key "posts", "fans"
+  add_foreign_key "subscriptions", "campaigns"
+  add_foreign_key "subscriptions", "fans"
 end

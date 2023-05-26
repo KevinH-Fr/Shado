@@ -3,7 +3,8 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns or /campaigns.json
   def index
-    @campaigns = Campaign.all
+    @athlete = Athlete.find(params[:id])
+    @campaigns = @athlete.campaigns
   end
 
   # GET /campaigns/1 or /campaigns/1.json
@@ -12,7 +13,9 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/new
   def new
-    @campaign = Campaign.new
+    @campaign = Campaign.find(params[:id])
+    @subscription = @campaign.subscriptions.new
+    # Additional code for the new action
   end
 
   # GET /campaigns/1/edit
