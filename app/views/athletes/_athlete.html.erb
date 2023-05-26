@@ -1,24 +1,29 @@
+
 <div class="card card-main" id="<%= dom_id athlete %>">
-
-
-  <p>
-    <strong>Name:</strong>
-    <%= athlete.name %>
-  </p>
-
-  <p>
-    <strong>Discipline:</strong>
-    <%= athlete.discipline %>
-  </p>
-
-  <p>
-    <strong>Bio:</strong>
-    <%= athlete.bio %>
-  </p>
-
-  <div class="flex-element m-1">
-    <%= link_to "", athlete_path(athlete), class: "btn btn-sm btn-primary fa-solid fa-eye m-1" %>
-    <%= link_to "Voir campaigns", campaigns_path(athlete_id: athlete), class: "btn btn-sm btn-warning fa-solid fa-star m-1" %>
+  <div class="row g-0">
+    <div class="col-md-4">
+      <%= image_tag(athlete.profilepic, class:"img-fluid rounded") if athlete.profilepic.present? %> 
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"> <%= athlete.name %></h5>
+        <p class="card-text">
+           <%= athlete.bio %>
+        </p>
+        <p class="card-text">
+          <small class="text-muted">
+            <%= athlete.discipline %>
+          </small>
+        </p>
+        <hr>  
+        <p class="card-text">
+          <div class="flex-element m-1">
+            <%= link_to "Voir", athlete_path(athlete), class: "btn btn-sm btn-primary fa-solid fa-eye m-1" %>
+            <%= link_to "Campaigns", campaigns_path(athlete_id: athlete), class: "btn btn-sm btn-warning fa-solid fa-star m-1" %>
+          </div>
+        </p> 
+        
+      </div>
+    </div>
   </div>
-
 </div>

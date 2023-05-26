@@ -1,4 +1,6 @@
 class Athlete < ApplicationRecord
+
+
     has_many :posts
    # has_many :associations
    # has_many :fans, through: :associations
@@ -7,5 +9,7 @@ class Athlete < ApplicationRecord
    has_many :fans, through: :campaigns
 
    belongs_to :user
+
+   has_one_attached :profilepic
 
 end

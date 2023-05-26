@@ -31,13 +31,16 @@
     <% end %>  
   <% end%>
 
-  <%= link_to(dashboard_index_path, class:"navlink") do %>
-    <i class="bi bi-clipboard2-data icon-navbar middled"></i>
-    <span class="text-navbar middled"> Dashboard  </span>
-  <% end %>  
+  <% if user_athlete.present? %>
+      
+    <%= link_to(dashboard_index_path, class:"navlink") do %>
+      <i class="bi bi-clipboard2-data icon-navbar middled"></i>
+      <span class="text-navbar middled"> Dashboard  </span>
+    <% end %>  
 
-  <%= link_to(new_post_path, class:"navlink nav-newpost") do %>
-    <span> New Post </span>
-  <% end %>  
+    <%= link_to(new_post_path, class:"navlink nav-newpost") do %>
+      <span> New Post </span>
+    <% end %>  
+  <% end %>
 
 </nav>

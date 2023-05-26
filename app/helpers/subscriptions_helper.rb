@@ -4,6 +4,6 @@ module SubscriptionsHelper
     end
 
     def sub_current_fan(campaign, fan)
-        Subscription.where(campaign_id: campaign, fan_id: fan).ids
+        Subscription.where(campaign_id: campaign, fan_id: fan)
     end
 end
