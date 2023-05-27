@@ -49,3 +49,5 @@ group :test do
   gem "webdrivers"
 end
 
+
+gem "noticed", "~> 1.6"

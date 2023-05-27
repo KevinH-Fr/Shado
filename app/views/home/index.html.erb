@@ -4,10 +4,18 @@
 Bienvenue 
 <%= user_name(current_user.id) %>
 
-<hr>
 
-Vous êtes connecté(e) en tant que <%= user_role(current_user.id) %>
+<% if @partial_role %>
+    <hr>
 
-<hr>
+    Vous êtes connecté(e) en tant que <%= user_role(current_user.id) %>
 
- <%= render partial: @partial_role %>
+    <hr>
+
+    <%= render partial: @partial_role  %>
+
+<% else %>
+    <%#= links to creer compte athlete et fan 
+        mieux integrer créa compte athlete ou fan à user
+    %>
+<% end %>

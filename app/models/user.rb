@@ -9,5 +9,7 @@ class User < ApplicationRecord
   has_one :fan
   has_one :athlete
 
+  has_many :notifications, as: :recipient, dependent: :destroy
+
 
 end
