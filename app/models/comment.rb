@@ -28,8 +28,10 @@ class Comment < ApplicationRecord
   private 
 
   def notify_recipient 
-    CommentNotification.with(comment: self, post: commentable).deliver_later(User.find(5))
-    # passer la personne qui recoit la notif en variable 
+    creator = commentable.athlete_id
+    puts "------------------- #{creator}"
+
+    CommentNotification.with(comment: self, post: commentable).deliver_later(User.find(creator))
   end
 
   def cleanup_notifications 
