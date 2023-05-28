@@ -1,9 +1,9 @@
 module PostsHelper
     def upvote_label(post, user)
         label_text = if user.voted_up_on? post
-                        "unvote"
+                       # "unvote"
                     else 
-                        "upvote"
+                       # "upvote"
                     end
         tag.span do
             "#{post.cached_votes_up} #{label_text}"
@@ -12,9 +12,9 @@ module PostsHelper
 
     def downvote_label(post, user)
         label_text = if user.voted_down_on? post
-                        "unvote"
+                       # "unvote"
                     else 
-                        "downvote"
+                      #  "downvote"
                     end
         tag.span do
             "#{post.cached_votes_down} #{label_text}"

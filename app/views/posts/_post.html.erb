@@ -23,11 +23,17 @@
     <%#= link_to "", edit_post_path(post), 
           class: "btn btn-sm btn-secondary fa-solid fa-pen-to-square m-1", 
           method: :post %>
-    <%= link_to "", post_path(post), class: "btn btn-sm btn-primary fa-solid fa-eye mx-2" %>
+    <%= button_to "", post_path(post), class: "btn btn-sm btn-primary fa-solid fa-eye mx-2" %>
   
-    <%= button_to upvote_label(post, current_user), vote_post_path(post, type: :upvote), 
+    <%#= button_to upvote_label(post, current_user), vote_post_path(post, type: :upvote), 
         method: :patch, 
         style: upvote_label_styles(post, current_user), class: "mx-2"  %>
+
+    <%= button_to vote_post_path(post, type: :upvote), method: :patch, class: "mx-2 btn btn-sm bg-danger text-light" do %>
+      <i class="bi bi-suit-heart-fill"></i>
+      <%= upvote_label(post, current_user) %>
+    <% end %>
+
     <%#= button_to downvote_label(post, current_user), vote_post_path(post, type: :downvote), 
         method: :patch, 
         style: downvote_label_styles(post, current_user)  %>
