@@ -17,27 +17,43 @@ class CommentNotification < Noticed::Base
 
   # Define helper methods to make rendering easier.
   #
-
-  def notif_label
-    @post = Post.find(params[:comment][:commentable_id])
-    @comment = Comment.find(params[:comment][:id])
-    @user = User.find(@comment.user_id)
-    "#{@user.email} commented on #{@post.content.truncate(10)}"
-  end
   
-  def notif_full
-    @post = Post.find(params[:comment][:commentable_id])
-    @comment = Comment.find(params[:comment][:id])
-    @user = User.find(@comment.user_id)
-    "#{@user.email} commented on #{@post.content}"
+
+  def type_commentable
+    commentableType = params[:comment][:commentable_type]
   end
 
-  def message_full
-    @comment = Comment.find(params[:comment][:id])
-    @content = @comment.body
-  end
-  
   def url
-    post_path(Post.find(params[:comment][:commentable_id]))
+    commentableType = params[:comment][:commentable_type]
+    commentable = params[:comment][:commentable_id]
+    comment = params[:comment]
+
+    if commentableType == "Post"
+      post_path(commentable)
+    elsif commentableType == "Comment"
+      comment_path(comment)
+    end
   end
+
+  def notif_full
+    
+    commentableType = params[:comment][:commentable_type]
+    commentable = params[:comment][:commentable_id]
+
+    if commentableType == "Post"
+
+      @post = Post.find(commentable)
+      @comment = Comment.find(params[:comment][:id])
+      @user = User.find(@comment.user_id)
+      "#{@user.email} commented on #{@post.content}"
+
+    elsif commentableType == "Comment"
+
+      @comment = params[:comment]
+      @user = User.find(@comment.user_id)
+      "#{@user.email} commented on #{@comment.body}"
+
+    end 
+  end
+  
 end

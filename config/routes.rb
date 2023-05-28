@@ -36,7 +36,8 @@ Rails.application.routes.draw do
   resources :comments, only: [] do
     resources :comments, only: %i[new create destroy], module: :comments
   end
-
+  get '/comments/:id', to: 'comments#show', as: 'comment'
+  
   resources :posts do
     resources :comments, only: %i[new create destroy], module: :posts
 

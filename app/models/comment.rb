@@ -21,15 +21,18 @@ class Comment < ApplicationRecord
 
   def find_top_parent
     return commentable unless commentable.is_a?(Comment)
-
     commentable.find_top_parent
   end
 
   private 
 
-  def notify_recipient 
-    creator = commentable.athlete_id
-    puts "------------------- #{creator}"
+  def notify_recipient
+
+    if commentable.is_a?(Post)
+      creator = commentable.athlete_id
+    elsif commentable.is_a?(Comment)
+      creator = commentable.user_id
+    end
 
     CommentNotification.with(comment: self, post: commentable).deliver_later(User.find(creator))
   end

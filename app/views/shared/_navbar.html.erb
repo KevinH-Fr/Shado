@@ -14,10 +14,13 @@
     <span class="text-navbar middled"> Fan Base  </span>
   <% end %>  
 
-  <%= link_to(notifications_index_path, class:"navlink") do %>
+  <%= link_to(notifications_index_path, class: "navlink position-relative") do %>
     <i class="bi bi-bell icon-navbar middled"></i>
-    <span class="text-navbar middled"> Notifications  </span>
-  <% end %>  
+    <span class="text-navbar middled">Notifications</span>
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      <%= @unread.count >= 9 ? "9+" : @unread.count %>
+    </span>
+  <% end %>
 
   <%= link_to(athletes_path, class:"navlink") do %>
     <i class="bi bi-star icon-navbar middled"></i>
@@ -42,7 +45,5 @@
       <span> New Post </span>
     <% end %>  
   <% end %>
-
-  <%= render "shared/notifications" %>
 
 </nav>

@@ -4,6 +4,11 @@ class CommentsController < ApplicationController
     def new
       @comment = Comment.new
     end
+
+    def show
+      @comment =  Comment.find(params[:id])
+      mark_notifications_as_read
+    end 
   
     def create
       @comment = @commentable.comments.build(comment_params)
@@ -45,4 +50,13 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:body).merge(user: current_user)
     end
+
+    def mark_notifications_as_read
+      if current_user 
+        comment = Comment.find(params[:id])
+        notifications_to_mark_as_read = comment.notifications_as_comment.where(recipient: current_user)
+        notifications_to_mark_as_read.update_all(read_at: Time.new)
+      end
+    end
+
   end

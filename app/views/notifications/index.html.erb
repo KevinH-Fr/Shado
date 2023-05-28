@@ -1,5 +1,16 @@
 <h1>Notifications</h1>
 
-<% @notifications.each do |notification| %>
+<h2> Unread: </h2>
+<% @unread.each do |notification| %>
+    <%= render 'notification', notification: notification %>
+<% end %>
+<% if @read.count > 0 && @unread.count > 0 %>
+    <hr>
+<% elsif @read.count + @unread.count == 0 %>
+    No notifications yet.
+<% end %>
+
+<h2> Read: </h2>
+<% @read.each do |notification| %>
     <%= render 'notification', notification: notification %>
 <% end %>

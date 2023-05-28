@@ -1,4 +1,4 @@
-<li class="dropdown-item">
+<div class="card card-main">
   <%= link_to notification.to_notification.notif_full, notification.to_notification.url %>
-  <div> <%= notification.to_notification.message_full %> </div>
-</li>
+  <%= notification.to_notification.type_commentable %>
+</div>
