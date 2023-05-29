@@ -6,7 +6,6 @@ class PostsController < ApplicationController
     @fan = Fan.find_by(user_id: current_user.id)
     @comment = Comment.new
 
-    
     if @fan
       @athletes = @fan.athletes
       @posts_suivis = Post.where(athlete_id: @athletes.pluck(:id))
@@ -82,7 +81,7 @@ class PostsController < ApplicationController
       if @post.save
 
        # Trigger the notification
-       PostNotification.with(post: @post).deliver_later(User.all)
+    #   PostNotification.with(post: @post).deliver_later(User.all)
 
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
