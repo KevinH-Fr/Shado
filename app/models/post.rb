@@ -35,15 +35,8 @@ class Post < ApplicationRecord
   
   def notify_recipient
 
-    recipient = User.all
-    # changer pour filtrer sur les users qui ont une subscription 
-    # a une campaign de l'athlete qui a publié le post 
-    # voir avec chatgpt et ex sur subscription pour chainer,
-    # verifier que les models sont à jours
-    # envoyer des puts pour verifier etapte par etape
-
-    puts "-------- recipients: #{recipient.ids}"
-
+    recipient = User.where(id: self.athlete.fans.pluck(:user_id).uniq)
+    puts "----------------- recipients: #{recipient.ids} -------------------------"
 
     PostNotification.with(post: self)
       .deliver_later(recipient)
