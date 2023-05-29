@@ -1,10 +1,6 @@
 class PostNotification < Noticed::Base
     deliver_by :database # Store the notification in the database
   
-    # Define the recipients of the notification
-    def recipients
-      User.all # Send the notification to all users
-    end
   
     # Define the message content of the notification
     def message
