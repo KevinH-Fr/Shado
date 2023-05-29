@@ -13,7 +13,8 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/new
   def new
-    @campaign = Campaign.find(params[:id])
+    #@campaign = Campaign.find(params[:id])
+    @campaign = Campaign.new
     @subscription = @campaign.subscriptions.new
     # Additional code for the new action
   end

@@ -14,12 +14,14 @@
     <span class="text-navbar middled"> Fan Base  </span>
   <% end %>  
 
-  <%= link_to(notifications_index_path, class: "navlink position-relative") do %>
-    <i class="bi bi-bell icon-navbar middled"></i>
-    <span class="text-navbar middled">Notifications</span>
-    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-      <%= @unread.count >= 9 ? "9+" : @unread.count %>
-    </span>
+  <% if current_user %>
+    <%= link_to(notifications_index_path, class: "navlink position-relative") do %>
+      <i class="bi bi-bell icon-navbar middled"></i>
+      <span class="text-navbar middled">Notifications</span>
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        <%= @unread.count >= 9 ? "9+" : @unread.count %>
+      </span>
+    <% end %>
   <% end %>
 
   <%= link_to(athletes_path, class:"navlink") do %>

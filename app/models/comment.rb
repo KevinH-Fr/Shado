@@ -35,6 +35,8 @@ class Comment < ApplicationRecord
     end
 
     CommentNotification.with(comment: self, post: commentable).deliver_later(User.find(creator))
+   # GenerateNotification.with(comment: self, post: commentable).deliver_later(User.find(creator))
+
   end
 
   def cleanup_notifications 
