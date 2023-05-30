@@ -1,6 +1,7 @@
 <h1>Notifications</h1>
 
-<h2> Unread: </h2>
+<h2> Unread: <%= @unread.count %>
+</h2>
 <% @unread.each do |notification| %>
     <%= render 'notification', notification: notification %>
 <% end %>
@@ -10,7 +11,8 @@
     No notifications yet.
 <% end %>
 
-<h2> Read: </h2>
+<h2> Read:  <%= @read.count %>
+</h2>
 <% @read.each do |notification| %>
     <%= render 'notification', notification: notification %>
 <% end %>

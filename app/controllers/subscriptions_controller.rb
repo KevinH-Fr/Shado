@@ -6,6 +6,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def show
+    mark_notifications_as_read
   end
 
   def new
@@ -61,4 +62,13 @@ class SubscriptionsController < ApplicationController
     def subscription_params
       params.require(:subscription).permit(:campaign_id, :fan_id)
     end
+
+    def mark_notifications_as_read
+      if current_user 
+        subscription = Subscription.find(params[:id])
+        notifications_to_mark_as_read = subscription.notifications_as_subscription.where(recipient: current_user)
+        notifications_to_mark_as_read.update_all(read_at: Time.new)
+      end
+    end
+
 end

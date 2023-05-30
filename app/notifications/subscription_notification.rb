@@ -10,7 +10,7 @@ class SubscriptionNotification < Noticed::Base
   
     # Define the URL or path for the notification
     def url
-      post_path(params[:subscription]) # Replace with the appropriate path helper for your app
+      subscription_path(params[:subscription]) 
     end
   end
   

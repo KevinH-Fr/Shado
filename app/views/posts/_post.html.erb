@@ -23,7 +23,7 @@
     <%#= link_to "", edit_post_path(post), 
           class: "btn btn-sm btn-secondary fa-solid fa-pen-to-square m-1", 
           method: :post %>
-    <%= button_to "", post_path(post), class: "btn btn-sm btn-primary fa-solid fa-eye mx-2" %>
+    <%= link_to "", post_path(post), class: "btn btn btn-primary fa-solid fa-eye" %>
   
     <%#= button_to upvote_label(post, current_user), vote_post_path(post, type: :upvote), 
         method: :patch, 

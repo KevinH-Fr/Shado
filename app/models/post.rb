@@ -20,6 +20,13 @@ class Post < ApplicationRecord
       unvote_by user
     else 
       upvote_by user
+
+      if user != self.athlete
+        recipient = self.athlete.user
+        LikePostNotification.with(liker: user, post: self)
+          .deliver_later(recipient)
+      end
+
     end
   end
 

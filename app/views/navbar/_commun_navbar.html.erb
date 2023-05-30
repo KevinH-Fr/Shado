@@ -3,10 +3,14 @@
     <span class="text-navbar middled"> Home  </span>
   <% end %> 
 
-  <%= link_to(posts_path, class:"navlink") do %>
+<%
+=begin%>
+   <%= link_to(posts_path, class:"navlink") do %>
     <i class="bi bi-people icon-navbar middled"></i>
     <span class="text-navbar middled"> Fan Base  </span>
-  <% end %>  
+  <% end %>   
+<%
+=end%>
 
   <% if current_user %>
     <%= link_to(notifications_index_path, class: "navlink position-relative") do %>
