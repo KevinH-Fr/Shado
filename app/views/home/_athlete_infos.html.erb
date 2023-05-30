@@ -1,1 +1,13 @@
 athelete infos
+
+
+
+<h2>Mes campagnes</h2>
+<%= render @campaigns %>
+
+<%= link_to "New campaign", new_campaign_path %>
+
+<h2>Mes followers</h2>
+<%= @followers.count %>
+
+<hr>

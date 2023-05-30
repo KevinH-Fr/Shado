@@ -17,25 +17,33 @@
 
   <body>
 
-    <div class="row full-height m-0 p-0">
-      <div class="col-4 flex-element overflow-auto">
-        <%= render "shared/navbar" %>
-      </div>
-      <div class="col-8 full-height overflow-auto ">
-        <main class=""> 
-          <p class="alert"><%= alert %></p>
-          <%= yield %>
-          <br> <hr>
-        </main>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12 d-md-none">
+          <%= render partial: 'navbar/small_navbar' %>
+        </div>
+        <div class="col-md-3 d-none d-md-block">
+          <%= render partial: 'navbar/large_navbar' %>
+        </div>
+        <div class="col-md-9">
+          <div class="full-height overflow-auto">
+            <main class="p-4">
+              <p class="alert"><%= alert %></p>
+              <%= yield %>
+              <br> <hr>
+            </main>
+          </div>
+        </div>
       </div>
     </div>
 
 
-    <footer class="bg-dark fixed-bottom">  
+  </body>
+
+      <footer class="bg-light text-dark fixed-bottom">  
       <%= render "shared/footer" %>
     </footer>
    
-  </body>
 
 </html>
 

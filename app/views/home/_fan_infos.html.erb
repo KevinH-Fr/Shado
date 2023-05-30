@@ -1,6 +1,20 @@
 
 
-<h4> Mes athletes </h4>
+<h4>Posts abonnements</h4>
 
-<%= render @athletes %>
+<div id="posts">
+  <% @posts_suivis.each do |post| %>
+    <%= render post %>
+  <% end %>
+</div>
 
+
+
+<h4 class="mt-4">Tous les posts</h4>
+
+<div id="posts">
+  <% @posts.each do |post| %>
+    <%= render post %>
+    
+  <% end %>
+</div>
