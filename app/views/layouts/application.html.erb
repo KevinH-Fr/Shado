@@ -19,14 +19,14 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-12 d-block d-md-none">
           <%= render partial: 'navbar/small_navbar' %>
         </div>
         <div class="col-md-3 d-none d-md-block">
           <%= render partial: 'navbar/large_navbar' %>
         </div>
         <div class="col-md-9">
-          <div class="full-height overflow-auto py-4">
+          <div class="full-height overflow-auto py-0">
             <main class="p-4">
               <p class="alert"><%= alert %></p>
               <%= yield %>
@@ -36,6 +36,7 @@
         </div>
       </div>
     </div>
+
 
 
   </body>

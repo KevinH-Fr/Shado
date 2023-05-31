@@ -2,25 +2,20 @@
 <% if user_signed_in? %>
   
   <p style="color: green"><%= notice %></p>
-  <%= render @user %>
-
-  <hr>
 
   <% if @fan.present? %>
     <%= render partial: 'fans/fan', locals: { fan: @fan } %>
+    <%= render @user %>
     <%= button_to "Edit this fan", edit_fan_path(@fan.id), class: "btn btn-primary btn-action" %>
 
   <% end %>
 
   <% if @athlete.present? %>
     <%= render partial: 'athletes/athlete', locals: { athlete: @athlete } %>
+    <%= render @user %>
     <%= button_to "Edit this athlete", edit_athlete_path(@athlete.id), class: "btn btn-primary btn-action" %>
 
   <% end %>
-
-  
-<hr>
-    
 
 
 <% end %>

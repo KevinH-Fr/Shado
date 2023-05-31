@@ -1,29 +1,63 @@
-
-<div class="card card-main" id="<%= dom_id athlete %>">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <%= image_tag(athlete.profilepic, class:"img-fluid rounded") if athlete.profilepic.present? %> 
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title"> <%= athlete.name %></h5>
-        <p class="card-text">
-           <%= athlete.bio %>
-        </p>
-        <p class="card-text">
-          <small class="text-muted">
-            <%= athlete.discipline %>
-          </small>
-        </p>
-        <hr>  
-        <p class="card-text">
-          <div class="flex-element m-1">
-            <%= link_to "Voir", athlete_path(athlete), class: "btn btn-sm btn-primary fa-solid fa-eye m-1" %>
-            <%= link_to "Campaigns", campaigns_path(athlete_id: athlete), class: "btn btn-sm btn-warning fa-solid fa-star m-1" %>
-          </div>
-        </p> 
-        
-      </div>
+<div class="card card-profile" id="<%= dom_id athlete %>">
+  <div class="image_wrapper">
+    <div class="sized">
+      <%= image_tag(athlete.panorama_pic, class: "panorama-img rounded-top") if athlete.panorama_pic.present? %> 
     </div>
   </div>
+  <div class="profile-pic-overlay">
+    <%= image_tag(athlete.profile_pic, class: "profile-pic") if athlete.profile_pic.present? %> 
+  </div>
+  <div class="card-body pt-5 profile-card-text">
+    <p class="card-text"><%= athlete.name %></p>
+    <p class="card-text"><strong>Discipline:</strong> <%= athlete.discipline %></p>
+    <p class="card-text"><strong>Bio:</strong> <%= athlete.bio %></p>
+    <%= link_to "Voir", athlete_path(athlete), class: "btn btn-sm btn-primary fa-solid fa-eye m-1" %>
+    <%= link_to "Campaigns", campaigns_path(athlete_id: athlete), class: "btn btn-sm btn-warning fa-solid fa-star m-1" %>
+  </div>
 </div>
+
+<style>
+  .profile-card-text {
+    padding-left: 50px;
+  }
+
+  .sized {
+    height: 250px;
+    width: 100%;
+  }
+
+  .panorama-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center center;
+    max-height: 250px;
+  }
+
+  .image_wrapper {
+    position: relative;
+  }
+
+  .profile-pic-overlay {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .profile-pic {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 100px;
+    border: 5px solid white;
+  }
+</style>
+
+
+<hr>
+
+
+<%#= render "test_profile" %>

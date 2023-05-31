@@ -9,6 +9,8 @@ class Athlete < ApplicationRecord
 
    belongs_to :user
 
-   has_one_attached :profilepic
+   has_one_attached :profile_pic
+   has_one_attached :panorama_pic
+
 
 end

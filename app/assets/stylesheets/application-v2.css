@@ -23,13 +23,13 @@
 
 .navlink{
     margin: .3em;
-    padding: .5em;
-    font-size:x-large;
+    padding: .4em;
+    font-size: x-large;
     border-radius: 20px;
     display: block;
     text-decoration: none;
     color: grey;
-    min-width: 220px;
+    min-width: 200px;
 }
  
 .navlink:hover{ 
@@ -67,5 +67,13 @@
     margin: .5em;
     margin-bottom: 1em;
     padding: .5em;
+    
+}
+
+.card-profile{
+   /* margin: .5em;
+    margin-bottom: 1em;
+    padding: .5em;*/
+    height: 100px;
     
 }
