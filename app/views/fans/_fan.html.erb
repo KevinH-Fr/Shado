@@ -1,20 +1,24 @@
-<div class="card card-main" id="<%= dom_id fan %>">
+<div class="card" id="<%= dom_id fan %>">
 
-  <h4> profile fan  </h4>
-  <p>
-    <strong>Pseudo:</strong>
-    <%= fan.pseudo %>
-  </p>
+    <div class="row g-0">
+      <div class="col-md-4">
+        <%= image_tag(fan.profile_pic, class: "card-img-top") if fan.profile_pic.present? %> 
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"> <%= fan.pseudo %> </h5>
+          <p class="card-text">
+            <%= fan.bio %>
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              <%= fan.user.email %>
+            </small></p>
+        </div>
+      </div>
+    </div>
 
-  <p>
-    <strong>Bio:</strong>
-    <%= fan.bio %>
-  </p>
 
-  <p>
-    <strong>User:</strong>
-    <%= fan.user.email %>
-  </p>
-
+    <%= link_to "Voir", fan_path(fan), class: "btn btn-sm btn-primary fa-solid fa-eye m-1" %>
 
 </div>
