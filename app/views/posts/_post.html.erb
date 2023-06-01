@@ -1,59 +1,32 @@
 <div class="card card-main" id="<%= dom_id post %>">
 
-  <p>
-    <strong>Athlete:</strong>
-    <%= athlete_full_name(post.athlete_id) %>
-  </p>
 
-  <p>
-    <strong>Content:</strong>
-    <%= post.content %>
-  </p>
+  <div class="row">
+    <div class="col-2 m-0 p-0 px-1">
+      <%= image_tag(post.athlete.profile_pic, class:"profile-pic-mini") if post.athlete.profile_pic.present? %>
+    </div>
+    <div class="col-10 px-2">
+      <span class="fw-bold"> <%= athlete_full_name(post.athlete_id) %></span> 
+      <small> <%= time_ago_in_words(post.created_at) %> ago </small> <br> 
+      <div class="my-4"> <%= post.content %> </div>
+      <%= render 'posts/attachment', post: post %>
 
-  <p>
-    <strong>exclusif:</strong>
-    <%= post.exclusif %>
-  </p>
+      <div class="flex-element-text-start">
+        <%= button_to vote_post_path(post, type: :upvote), method: :patch, class: "btn-like" do %>
+          <i class="fa fa-solid fa-heart mx-2"></i>
+          <span><%= upvote_label(post, current_user) %></span>
+        <% end %>
 
-  <%= image_tag(post.image1, class:"img-fluid rounded") if post.image1.present? %> 
-  <%= video_tag(url_for(post.file), controls: true, class: "p-2") if post.file.present? %>
-
-  <div class="flex-element">
-    <%#= button_to "", post, method: :delete, class: "btn btn-sm btn-danger fa-solid fa-trash m-1" %>
-    <%#= link_to "", edit_post_path(post), 
-          class: "btn btn-sm btn-secondary fa-solid fa-pen-to-square m-1", 
-          method: :post %>
-    <%= link_to "", post_path(post), class: "btn btn btn-primary fa-solid fa-eye" %>
-  
-    <%#= button_to upvote_label(post, current_user), vote_post_path(post, type: :upvote), 
-        method: :patch, 
-        style: upvote_label_styles(post, current_user), class: "mx-2"  %>
-
-    <%= button_to vote_post_path(post, type: :upvote), method: :patch, class: "mx-2 btn btn-sm bg-danger text-light" do %>
-      <i class="bi bi-suit-heart-fill"></i>
-      <%= upvote_label(post, current_user) %>
-    <% end %>
-
-    <%#= button_to downvote_label(post, current_user), vote_post_path(post, type: :downvote), 
-        method: :patch, 
-        style: downvote_label_styles(post, current_user)  %>
-
-
-      <%# if @commentable.present? %>
-
-       <%#= render template: 'comments/new' %>
-      <%# else %>
-
-      <%= link_to post_path(post), class: "btn btn-sm btn-dark" do %>
-        <i class= "fa fa-solid fa-comment mx-2"></i>  
-        <span>  <%= post.comments.count %> </span>       
-      <% end %>
-      
-      
-      <%= link_to "Go to comments", post_path(post), class: "btn btn-sm btn-primary mx-2" %>
-      <%= link_to "Add comment", new_post_comment_path(post, @comment), class: "btn btn-sm btn-success mx-2" %> 
-      <%# end %>
-
+        <%= link_to post_path(post), class: "btn-main" do %>
+          <i class= "fa fa-solid fa-comment mx-2"></i>  
+          <span>  <%= post.comments.count %> </span>       
+        <% end %>
+      </div>
+    
+    </div>
   </div>
+
+    <%#= post.exclusif %>
+
 
 </div>

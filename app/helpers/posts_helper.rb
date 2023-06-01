@@ -23,13 +23,13 @@ module PostsHelper
 
     def upvote_label_styles(post, user)
         if user.voted_up_on? post 
-            "background-color: grey;"
+            #"background-color: grey;"
         end 
     end
 
     def downvote_label_styles(post, user)
         if user.voted_down_on? post 
-            "background-color: grey;"
+           # "background-color: grey;"
         end 
     end
     

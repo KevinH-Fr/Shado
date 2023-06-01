@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :athlete
-  has_one_attached :image1
-  has_one_attached :file
+
+  has_one_attached :media, dependent: :destroy
 
   has_many :comments, -> { order(created_at: :desc) }, as: :commentable, dependent: :destroy, inverse_of: :commentable
 

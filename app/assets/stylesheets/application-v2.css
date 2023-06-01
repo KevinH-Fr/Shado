@@ -10,6 +10,7 @@
 
 .middled{
     vertical-align: middle;
+    align-items: center;
 }
 
 .flex-element{
@@ -18,8 +19,12 @@
     justify-content:space-between;
 }
 
-/* NAVBAR */ 
+.flex-element-text-start{
+  display: flex;
+  align-items: start; 
+}
 
+/* NAVBAR */ 
 
 .navlink{
     margin: .3em;
@@ -117,3 +122,42 @@
     border-radius: 100px;
     border: 5px solid white;
   }
+
+  .profile-pic-mini {
+    width: 75px;
+    height: 75px;
+    object-position: center center;
+    border-radius: 100px;
+    border: 5px solid white;
+  }
+
+
+  .input-group {
+    align-items: center;
+    vertical-align: middle;
+  }
+
+  /* BUOTONS */
+  
+  .btn-main, .btn-like{
+  /*  margin: .3em; */
+    padding: .4em;
+    margin-right: 20px;
+    font-size: x-large;
+    border-radius: 20px;
+    display: block;
+    text-decoration: none;
+    background-color: white;
+    color: grey;
+    border: none;
+}
+ 
+.btn-main:hover{ 
+    background-color: #E5F7FD;
+    color: #00AFF0;
+}
+
+.btn-like:hover{ 
+  background-color: #fde5f6;
+  color: #d82938;
+}

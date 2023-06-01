@@ -1,0 +1,11 @@
+<div class="container-fluid">
+
+    <% if post.media.attached? %>
+        <% if post.media.image? %>
+            <%= image_tag(post.media, class:"rounded w-100") %>
+        <% elsif post.media.video? %> 
+            <%= video_tag(url_for(post.media), class:"w-100", controls:"") %>
+        <% end %>
+    <% end %>
+
+</div>

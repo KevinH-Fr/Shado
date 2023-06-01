@@ -119,7 +119,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :location, :content, :athlete_id, :fan_id, :image1, :file, :exclusif)
+      params.require(:post).permit(:title, :location, :content, :athlete_id, :exclusif, :media)
     end
 
     def mark_notifications_as_read
