@@ -1,24 +1,15 @@
-<div class="card" id="<%= dom_id fan %>">
 
-    <div class="row g-0">
-      <div class="col-md-4">
-        <%= image_tag(fan.profile_pic, class: "card-img-top") if fan.profile_pic.present? %> 
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title"> <%= fan.pseudo %> </h5>
-          <p class="card-text">
-            <%= fan.bio %>
-          </p>
-          <p class="card-text">
-            <small class="text-muted">
-              <%= fan.user.email %>
-            </small></p>
-        </div>
-      </div>
-    </div>
-
-
-    <%= link_to "Voir", fan_path(fan), class: "btn btn-sm btn-primary fa-solid fa-eye m-1" %>
-
+<div class="card card-profile mb-4" id="<%= dom_id fan %>">
+  <div class="image_wrapper">
+    <div class="sized-fan-panorama rounded-top bg-secondary"> </div>
+  </div>
+  <div class="profile-pic-fan-overlay">
+    <%= image_tag(fan.profile_pic, class: "profile-pic") if fan.profile_pic.present? %> 
+  </div>
+  <div class="card-body pt-5 profile-card-text profile-pic-gap">
+    <p class="card-text"><%= fan.pseudo %></p>
+    <p class="card-text"><%= fan.user.email %></p>
+    <%= link_to "", fan_path(fan), class: "btn btn-sm btn-primary fa-solid fa-eye m-1" %>
+    <%= button_to "", edit_fan_path(fan), method: :post, class: "btn btn-sm btn-secondary fa-solid fa-pen-to-square m-1" %>
+  </div>
 </div>

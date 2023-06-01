@@ -41,15 +41,18 @@ class FansController < ApplicationController
     end
   end
 
-  # PATCH/PUT /fans/1 or /fans/1.json
   def update
     respond_to do |format|
       if @fan.update(fan_params)
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update(@fan, partial: 'fans/fan', locals: { fan: @fan })
+        end
         format.html { redirect_to fan_url(@fan), notice: "Fan was successfully updated." }
-        format.json { render :show, status: :ok, location: @fan }
       else
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update(@fan, partial: 'fans/form', locals: { fan: @fan })
+        end
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @fan.errors, status: :unprocessable_entity }
       end
     end
   end
