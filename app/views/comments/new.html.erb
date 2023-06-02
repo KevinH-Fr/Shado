@@ -1,13 +1,18 @@
 
 
 <div>
- nb comments:<%= @commentable.comments.count %> <br>
 
-<% if @commentable.present? %>
+<%
+=begin%>
+  nb comments:<%= @commentable.comments.count %> <br>
+<%
+=end%>
 
-    New comment for
-    <%= link_to "Post #{@commentable.id}", @commentable unless @commentable.is_a?(Comment) %>
-    <%= link_to @commentable.find_top_parent.id, @commentable.find_top_parent if @commentable.is_a?(Comment) %>
-    <%= render 'comments/form', comment: @comment %>
-<% end %>
+    <% if @commentable.present? %>
+        New comment for
+        <%= link_to "Post #{@commentable.id}", @commentable unless @commentable.is_a?(Comment) %>
+        <%= link_to @commentable.find_top_parent.id, @commentable.find_top_parent if @commentable.is_a?(Comment) %>
+        <%= render 'comments/form', comment: @comment %>
+    <% end %>
+    
 </div>

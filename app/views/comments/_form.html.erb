@@ -1,14 +1,14 @@
-<%= form_with(model: [@commentable, comment]) do |form| %>
-  
 
-  <div class="field">
-    <%= form.text_area :body,
-      style: "width: 100%",
-      maxlength: Comment::MAX_BODY_LENGTH, 
-      placeholder: 'Add a comment here' %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+  <%= form_with(model: [@commentable, comment]) do |form| %>
+    
+    <div class="input-group my-2">
+      <%= form.text_area :body,
+        maxlength: Comment::MAX_BODY_LENGTH, 
+        placeholder: 'Type your comment...',
+        class: "form-control field-with-format" %>
+    </div>
+
+    <%= render "shared/submit_btn" %>
+      
+  <% end %>

@@ -184,3 +184,16 @@
   background-color: #fde5f6;
   color: #d82938;
 }
+
+.btn-no-style{
+  background-color: white;
+  border-style: none;
+}
+
+
+/* TEXTS */
+
+.no-underline{
+ text-decoration: none;
+ color: black;
+}

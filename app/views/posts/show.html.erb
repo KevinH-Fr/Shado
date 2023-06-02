@@ -2,12 +2,8 @@
 
 <%= render @post %>
 
-<hr>
-
-
-<%= render template: 'comments/new' %>
-
 
 <div class="card card-main">
+    <%= render template: 'comments/new' %>
     <%= render @comments %>
 </div>
