@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/index'
   resources :sports
   resources :subscriptions
 
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
 
   
   get 'home/index'
+  get 'search/index'
+
 
   resources :fans do
     member do

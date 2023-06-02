@@ -27,6 +27,11 @@
     <span class="text-navbar middled"> Subscriptions  </span>
   <% end %>  
 
+  <%= link_to(search_index_path, class:"navlink") do %>
+    <i class="bi bi-search icon-navbar middled"></i>
+    <span class="text-navbar middled"> Search  </span>
+  <% end %>  
+
   <% if current_user.present? %>
     <%= link_to(user_path(current_user.id), class:"navlink") do %>
       <i class="bi bi-person icon-navbar middled"></i>
