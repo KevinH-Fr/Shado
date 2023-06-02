@@ -4,6 +4,9 @@ class HomeController < ApplicationController
 
   def index
     @athlete = Athlete.where(user_id: current_user).first
+
+    @q = Athlete.ransack(params[:q])
+    @results = @q.result(distinct: true).order(created_at: :desc)
     
     if user_role(current_user.id) == "fan" 
       @partial_role = 'fan_infos'
@@ -20,6 +23,8 @@ class HomeController < ApplicationController
       @campaigns = @athlete.campaigns
       @followers = Fan.all
     end
+
+
 
   end
 end

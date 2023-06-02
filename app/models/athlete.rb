@@ -12,5 +12,9 @@ class Athlete < ApplicationRecord
    has_one_attached :profile_pic
    has_one_attached :panorama_pic
 
+   def self.ransackable_attributes(auth_object = nil)
+    ["bio", "created_at", "discipline", "id", "name", "updated_at", "user_id"]
+  end
+
 
 end

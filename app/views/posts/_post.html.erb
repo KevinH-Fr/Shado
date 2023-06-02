@@ -11,14 +11,14 @@
       <div class="my-4"> <%= post.content %> </div>
       <%= render 'posts/attachment', post: post %>
 
-      <div class="flex-element-text-start">
+      <div class="flex-element-text-start ms-1 mt-1">
         <%= button_to vote_post_path(post, type: :upvote), method: :patch, class: "btn-like" do %>
-          <i class="fa fa-solid fa-heart mx-2"></i>
+          <i class="fa fa-sm fa-solid fa-heart"></i>
           <span><%= upvote_label(post, current_user) %></span>
         <% end %>
 
         <%= link_to post_path(post), class: "btn-main" do %>
-          <i class= "fa fa-solid fa-comment mx-2"></i>  
+          <i class= "fa fa-sm fa-solid fa-comment"></i>  
           <span>  <%= post.comments.count %> </span>       
         <% end %>
       </div>

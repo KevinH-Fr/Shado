@@ -2,12 +2,23 @@ class AthletesController < ApplicationController
   before_action :set_athlete, only: %i[ show edit update destroy ]
 
   def index
-    @athletes = Athlete.all
 
     @fan = Fan.where(user_id: current_user.id).first
-   # @athletes_suivis = @fan.athletes if @fan.present?
+    # @athletes_suivis = @fan.athletes if @fan.present?
+ 
+    @q = Athlete.ransack(params[:q])
 
-   @athletes_suivis = @fan.athletes.distinct if @fan.present?
+    if @q.present?
+      @athletes = @q.result(distinct: true).order(created_at: :desc)
+    else
+      @athletes = Athlete.all
+      @athletes_suivis = @fan.athletes.distinct if @fan.present?
+
+    end
+    
+
+
+
 
 
   end
