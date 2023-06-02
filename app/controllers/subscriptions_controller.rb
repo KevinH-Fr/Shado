@@ -60,7 +60,7 @@ class SubscriptionsController < ApplicationController
     end
 
     def subscription_params
-      params.require(:subscription).permit(:campaign_id, :fan_id)
+      params.require(:subscription).permit(:campaign_id, :fan_id, :brut, :net)
     end
 
     def mark_notifications_as_read

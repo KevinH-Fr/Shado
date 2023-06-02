@@ -49,6 +49,6 @@
   </div> 
 
    <% sub_current_fan(campaign, user_fan).each do |sub| %>
-    <%= link_to "Edit sub #{sub}" , subscription_path(sub), class: "btn btn-success m-2" %>
+    <%= link_to "Edit sub #{sub.id}" , subscription_path(sub), class: "btn btn-success m-2" %>
   <% end %> 
 </div>

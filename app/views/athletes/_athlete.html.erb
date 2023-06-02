@@ -9,7 +9,7 @@
   </div>
   <div class="card-body pt-5 profile-card-text">
     <p class="card-text"><%= athlete.name %></p>
-    <p class="card-text"><strong>Sport:</strong> <%= Sport.find(athlete.sport_id).name %></p>
+    <p class="card-text"><strong>Sport:</strong> <%= Sport.find(athlete.sport_id).name if athlete.sport_id.present?  %></p>
     <p class="card-text"><strong>Bio:</strong> <%= athlete.bio %></p>
     <%= link_to "Voir", athlete_path(athlete), class: "btn btn-sm btn-primary fa-solid fa-eye m-1" %>
     <%= button_to "", edit_athlete_path(athlete), method: :post, class: "btn btn-sm btn-secondary fa-solid fa-pen-to-square m-1" %>

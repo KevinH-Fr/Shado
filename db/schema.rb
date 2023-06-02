@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_02_102115) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_02_164411) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -145,6 +145,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_02_102115) do
     t.integer "fan_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "brut"
+    t.decimal "net"
     t.index ["campaign_id"], name: "index_subscriptions_on_campaign_id"
     t.index ["fan_id"], name: "index_subscriptions_on_fan_id"
   end

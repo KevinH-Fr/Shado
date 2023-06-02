@@ -1,13 +1,20 @@
 <h1>Dashboard</h1>
 
-
-<h2>Mes campagnes</h2>
-
+<h2>Mes campagnes
+  (nb: <%= @campaigns.count %>) 
+</h2>
 <%= render @campaigns %>
 
-<%= link_to "New campaign", new_campaign_path %>
-
-<h2>Mes followers</h2>
-<%= @followers.count %>
+<%= link_to "New campaign", new_campaign_path, class: "btn btn-success my-2" %>
 
 <hr>
+
+<h2>Mes followers
+  (nb: <%= @followers.count %>) 
+</h2>
+<%= render partial: 'fans/fan', collection: @followers, as: :fan %>
+
+<hr>
+
+<h2> Mes statistiques </h2>
+<%= render "statistiques" %>

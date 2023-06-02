@@ -1,0 +1,21 @@
+
+<div class="card text-center">
+    <%#= image_tag(produit.image1, class:"card-img-top") if produit.image1.present? %> 
+    <div class="card-body">
+        <p class="card-text fs-1 m-1"> nb followers: <%= @followers.count %> </p>
+        <p class="card-text fs-4 m-1"> nb subscriptions: <%= @subscriptions.count  %> </p>
+        <p class="card-text fs-4 m-1"> month revenu: <%= @valSubscriptions  %> </p>
+    </div>
+</div>
+
+<div class="card my-2">
+    <%= render "charts/chartLineSubAthlete" %>
+</div>
+
+<div class="card my-2">
+    <%= render "charts/chartPieSubAthlete" %>
+</div>
+
+<div class="card my-2">
+    <%= render "charts/chartBarSubAthlete" %>
+</div>
