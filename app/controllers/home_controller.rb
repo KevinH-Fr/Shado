@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     @athlete = Athlete.where(user_id: current_user).first
 
     @q = Athlete.ransack(params[:q])
-    @results = @q.result(distinct: true).order(created_at: :desc)
+   # @results = @q.result(distinct: true).order(created_at: :desc)
     
     if user_role(current_user.id) == "fan" 
       @partial_role = 'fan_infos'

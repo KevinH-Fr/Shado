@@ -18,9 +18,6 @@ class AthletesController < ApplicationController
     
 
 
-
-
-
   end
 
   def show
@@ -34,6 +31,8 @@ class AthletesController < ApplicationController
   end
 
   def edit
+    @sports = Sport.all
+
     respond_to do |format|
       format.html
       format.turbo_stream do  
@@ -84,6 +83,6 @@ class AthletesController < ApplicationController
     end
 
     def athlete_params
-      params.require(:athlete).permit(:name, :discipline, :bio, :user_id, :profile_pic, :panorama_pic)
+      params.require(:athlete).permit(:name, :discipline, :bio, :user_id, :profile_pic, :panorama_pic, :sport_id)
     end
 end

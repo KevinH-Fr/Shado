@@ -17,9 +17,12 @@
         </div>
 
         <div class="form-group my-4">
-            <%#= f.label :type_produit_eq, "Type de bateau", class: "fw-bold" %>
-            <%#= f.select :type_produit_eq, options_for_select(Produit.distinct.pluck(:type_produit)), {}, class: "form-select",
-                placeholder: "Moteur, voilier, catamaran, ..." %>
+            <%= f.label :sport_cont, "Sport", class: "fw-bold" %>
+            <%#= f.select :sport_eq, options_for_select(Sport.distinct.pluck(:name)), {include_blank: :true}, class: "form-select",
+                placeholder: "Tennis, Golf, Poney, ..." %>
+            <%= f.text_field :sport_id_eq,  class: "form-control", placeholder: "Nom" %>
+            <%# options_for_select(Sport.distinct.pluck(:name)), {include_blank: :true}, class: "form-select", placeholder: "Tennis, Golf, Poney, ..." %>
+
         </div>
 
             <div class="form-group my-4">
