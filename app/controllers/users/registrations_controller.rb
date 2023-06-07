@@ -6,12 +6,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
+    @sports = Sport.all
+
     super do |resource|
       if params[:role] == "fan"
         resource.build_fan
-        puts "-------------------- controller user registration - call new avec build fan"
-      else
-      #  resource.build_preneur 
+      elsif  params[:role] == "athlete"
+        resource.build_athlete
       end 
     end
   end
@@ -70,11 +71,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation, fan_attributes: [:pseudo])
+    params.require(:user).permit(:email, :password, :password_confirmation, fan_attributes: [:pseudo], athlete_attributes: [:name, :sport_id])
   end
 
   def account_update_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :current_password, fan_attributes: [:pseudo])
+    params.require(:user).permit(:email, :password, :password_confirmation, :current_password, fan_attributes: [:pseudo], athlete_attributes: [:name, :sport_id])
   end
-  
+
 end

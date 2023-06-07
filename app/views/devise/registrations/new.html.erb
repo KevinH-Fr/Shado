@@ -6,15 +6,14 @@
 
   
   <%= link_to "Fan", url_for(role: "fan"), class: "btn btn-outline-success" %>
+  <%= link_to "Athlete", url_for(role: "athlete"), class: "btn btn-outline-warning" %>
+
+  <hr>  
+
 
     <% if params[:role] == "fan" %>
       <!-- fan model -->
       <%= f.fields_for :fan do |g| %>
-
-        <div class="input-group mb-1">
-          <%= g.label :user_id, class:"input-group-text label-with-format" %>
-          <%= g.text_field :user_id, class:"form-control " %>
-        </div>
 
         <div class="input-group mb-1">
           <%= g.label :pseudo, class:"input-group-text label-with-format" %>
@@ -25,32 +24,50 @@
     <% end %>
 
 
+    <% if params[:role] == "athlete" %>
+      <!-- fan model -->
+      <%= f.fields_for :athlete do |g| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <div class="input-group mb-1">
+          <%= g.label :name, class:"input-group-text label-with-format" %>
+          <%= g.text_field :name, class:"form-control " %>
+        </div>
+    
+        <div class="input-group my-2">
+          <%= g.label :sport, class: "input-group-text label-with-format bg-secondary text-light" %>
+          <%= g.select :sport_id, @sports.collect { |c| [c.name, c.id] }, 
+                  {include_blank: :true}, class: "form-select text-center" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+      <% end %>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-
-
+    <% if params[:role] == "athlete" || params[:role] == "fan"  %>
 
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
 
-<%= render "devise/shared/links" %>
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+         <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+    <% end %>
+
+    <%#= render "devise/shared/links" %>
+
+  <% end %>
