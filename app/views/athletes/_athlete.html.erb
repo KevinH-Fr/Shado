@@ -1,11 +1,11 @@
 <div class="card card-profile mb-4" id="<%= dom_id athlete %>">
   <div class="image_wrapper">
     <div class="sized">
-      <%= image_tag(athlete.panorama_pic, class: "panorama-img rounded-top") if athlete.panorama_pic.present? %> 
+      <%= image_tag(athlete.default_panorama_pic, class: "panorama-img rounded-top") %> 
     </div>
   </div>
   <div class="profile-pic-overlay">
-    <%= image_tag(athlete.profile_pic, class: "profile-pic") if athlete.profile_pic.present? %> 
+    <%= image_tag(athlete.default_profile_pic, class: "profile-pic") %> 
   </div>
   <div class="card-body pt-5 profile-card-text">
     <p class="card-text"><%= athlete.name %></p>

@@ -15,15 +15,23 @@ class Athlete < ApplicationRecord
    has_one_attached :panorama_pic
 
 
-  def default_image
+  def default_profile_pic
     if profile_pic.attached?
       profile_pic
     else
-      'profile_default.png'
+      'profile_default'
     end
   end
 
-   def self.ransackable_attributes(auth_object = nil)
+  def default_panorama_pic
+    if panorama_pic.attached?
+      panorama_pic
+    else
+      'panorama_default'
+    end
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
     ["bio", "created_at", "sport_id", "id", "name", "updated_at", "user_id"]
   end
 

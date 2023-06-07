@@ -4,7 +4,7 @@
     <div class="sized-fan-panorama rounded-top bg-secondary"> </div>
   </div>
   <div class="profile-pic-fan-overlay">
-    <%= image_tag(fan.profile_pic, class: "profile-pic") if fan.profile_pic.present? %> 
+    <%= image_tag(fan.default_profile_pic, class: "profile-pic") %> 
   </div>
   <div class="card-body pt-5 profile-card-text profile-pic-gap">
     <p class="card-text"><%= fan.pseudo %></p>

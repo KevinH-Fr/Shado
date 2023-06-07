@@ -10,6 +10,13 @@ class Fan < ApplicationRecord
 
    has_one_attached :profile_pic
 
+   def default_profile_pic
+      if profile_pic.attached?
+        profile_pic
+      else
+        'profile_default'
+      end
+    end
 
   
 end
