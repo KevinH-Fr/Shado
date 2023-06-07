@@ -11,5 +11,6 @@ class User < ApplicationRecord
 
   has_many :notifications, as: :recipient, dependent: :destroy
 
+  accepts_nested_attributes_for :fan
 
 end

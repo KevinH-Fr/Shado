@@ -5,9 +5,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    super do |resource|
+      if params[:role] == "fan"
+        resource.build_fan
+        puts "-------------------- controller user registration - call new avec build fan"
+      else
+      #  resource.build_preneur 
+      end 
+    end
+  end
 
   # POST /resource
   # def create
@@ -59,4 +66,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def sign_up_params
+    params.require(:user).permit(:email, :password, :password_confirmation, fan_attributes: [:pseudo])
+  end
+
+  def account_update_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :current_password, fan_attributes: [:pseudo])
+  end
+  
 end

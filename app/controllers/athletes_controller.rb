@@ -57,6 +57,8 @@ class AthletesController < ApplicationController
   end
 
   def update
+    @sports = Sport.all
+
     respond_to do |format|
       if @athlete.update(athlete_params)
         format.html { redirect_to athlete_url(@athlete), notice: "Athlete was successfully updated." }

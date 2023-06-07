@@ -3,6 +3,29 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+
+  
+  <%= link_to "Fan", url_for(role: "fan"), class: "btn btn-outline-success" %>
+
+    <% if params[:role] == "fan" %>
+      <!-- fan model -->
+      <%= f.fields_for :fan do |g| %>
+
+        <div class="input-group mb-1">
+          <%= g.label :user_id, class:"input-group-text label-with-format" %>
+          <%= g.text_field :user_id, class:"form-control " %>
+        </div>
+
+        <div class="input-group mb-1">
+          <%= g.label :pseudo, class:"input-group-text label-with-format" %>
+          <%= g.text_field :pseudo, class:"form-control " %>
+        </div>
+              
+      <% end %>
+    <% end %>
+
+
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -20,6 +43,10 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+
+
+
+
 
   <div class="actions">
     <%= f.submit "Sign up" %>
