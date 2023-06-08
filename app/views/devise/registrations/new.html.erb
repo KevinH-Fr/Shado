@@ -1,73 +1,116 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="card p-4 signup-form">
+  <h2 class="text-center fw-bold">Sign up</h2>
 
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  
-  <%= link_to "Fan", url_for(role: "fan"), class: "btn btn-outline-success" %>
-  <%= link_to "Athlete", url_for(role: "athlete"), class: "btn btn-outline-warning" %>
+    <div class="text-center">
+      <%= link_to "Fan", url_for(role: "fan"), class: "btn btn-success btn-form" %>
+      <%= link_to "Athlete", url_for(role: "athlete"), class: "btn btn-warning btn-form" %>
+    </div>
 
-  <hr>  
+      <% if params[:role] == "fan" %>
+        <div class="container p-4 w-50"> 
 
+          <%= f.fields_for :fan do |g| %>
 
-    <% if params[:role] == "fan" %>
-      <!-- fan model -->
-      <%= f.fields_for :fan do |g| %>
+            <%= g.file_field :profile_pic, class: "form-control", id: "profile-pic-input", style: "display: none;", accept: "image/*", onchange: "previewImage(this);" %>
 
-        <div class="input-group mb-1">
-          <%= g.label :pseudo, class:"input-group-text label-with-format" %>
-          <%= g.text_field :pseudo, class:"form-control " %>
+            <div class="text-center my-4">
+              <label for="profile-pic-input">
+                <div id="profile-pic-preview">
+                  <%= image_tag("profile_default", class: "profile-pic") %> 
+                </div>
+              </label>
+            </div>
+
+            <div class="input-group my-2">
+              <%= g.label :pseudo, class:"input-group-text label-colored" %>
+              <%= g.text_field :pseudo, class:"form-control " %>
+            </div>
+                  
+          <% end %>
         </div>
-              
       <% end %>
+
+
+      <% if params[:role] == "athlete" %>
+        <%= f.fields_for :athlete do |g| %>
+
+          <div class="input-group mb-1">
+            <%= g.label :name, class:"input-group-text label-with-format" %>
+            <%= g.text_field :name, class:"form-control " %>
+          </div>
+      
+          <div class="input-group my-2">
+            <%= g.label :sport, class: "input-group-text label-with-format bg-secondary text-light" %>
+            <%= g.select :sport_id, @sports.collect { |c| [c.name, c.id] }, 
+                    {include_blank: :true}, class: "form-select text-center" %>
+          </div>
+
+        <% end %>
+      <% end %>
+
+      <% if params[:role] == "athlete" || params[:role] == "fan"  %>
+
+      <div class="container px-4 w-50"> 
+
+        <div class="input-group mb-2">
+          <%= f.label :email, class:"input-group-text label-with-format" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control " %>
+        </div>
+
+        <div class="input-group mb-2">
+          <%= f.label :password, class:"input-group-text label-with-format" %>
+          <%= f.password_field :password, autocomplete: "new-password", class:"form-control " %>
+        </div>
+
+        <div class="input-group mb-2">
+          <%= f.label :confirmation, class:"input-group-text label-with-format" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control " %>
+        </div>
+
+      </div>
+
+
+      <button type="submit" class="btn btn-primary container-fluid my-4">
+       <i class="fa-solid fa-square-check"></i> 
+        <span> SIGN UP</span>
+      </button>
+
+      <% end %>
+
+      <%#= render "devise/shared/links" %>
+
     <% end %>
 
 
-    <% if params[:role] == "athlete" %>
-      <!-- fan model -->
-      <%= f.fields_for :athlete do |g| %>
+  </div>
 
-        <div class="input-group mb-1">
-          <%= g.label :name, class:"input-group-text label-with-format" %>
-          <%= g.text_field :name, class:"form-control " %>
-        </div>
+  <script>  
     
-        <div class="input-group my-2">
-          <%= g.label :sport, class: "input-group-text label-with-format bg-secondary text-light" %>
-          <%= g.select :sport_id, @sports.collect { |c| [c.name, c.id] }, 
-                  {include_blank: :true}, class: "form-select text-center" %>
-        </div>
+    function previewImage(input) {
+      console.log("test hello from js")
+    
+      var previewContainer = document.getElementById("profile-pic-preview");
+      previewContainer.innerHTML = ""; // Clear previous contents
 
-      <% end %>
-    <% end %>
-
-    <% if params[:role] == "athlete" || params[:role] == "fan"  %>
-
-
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-         <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "Sign up" %>
-      </div>
-    <% end %>
-
-    <%#= render "devise/shared/links" %>
-
-  <% end %>
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          var img = document.createElement("img");
+          img.src = e.target.result;
+          previewContainer.appendChild(img);
+          img.classList.add("profile-pic")
+        };
+        reader.readAsDataURL(input.files[0]);
+      } else {
+        var placeholder = document.createElement("span");
+        placeholder.classList.add("placeholder");
+        placeholder.textContent = "No Image Selected";
+        previewContainer.appendChild(placeholder);
+      }
+    }
+  
+  </script>

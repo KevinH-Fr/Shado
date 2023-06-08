@@ -197,3 +197,18 @@
  text-decoration: none;
  color: black;
 }
+
+.signup-form{
+  background-image: url("athlete_form_opacity");
+}
+
+.btn-form{
+  width: 100px;
+  margin: 20px;
+}
+
+div.input-group label.label-colored {
+  background-color: #d7b053; /* Replace with your desired background color */
+  color: #fff; /* Set text color to ensure readability */
+  /* Add any other styles as needed */
+}

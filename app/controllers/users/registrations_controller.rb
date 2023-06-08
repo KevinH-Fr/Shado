@@ -71,11 +71,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation, fan_attributes: [:pseudo], athlete_attributes: [:name, :sport_id])
+    params.require(:user).permit(:email, :password, :password_confirmation, fan_attributes: [:pseudo, :profile_pic], athlete_attributes: [:name, :sport_id])
   end
 
   def account_update_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :current_password, fan_attributes: [:pseudo], athlete_attributes: [:name, :sport_id])
+    params.require(:user).permit(:email, :password, :password_confirmation, :current_password, fan_attributes: [:pseudo, :profile_pic], athlete_attributes: [:name, :sport_id])
   end
 
 end
