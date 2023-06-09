@@ -200,6 +200,9 @@
 
 .signup-form{
   background-image: url("athlete_form_opacity");
+  width: 90vw;
+  max-width: 600px;
+
 }
 
 .btn-form{
@@ -212,3 +215,4 @@ div.input-group label.label-colored {
   color: #fff; /* Set text color to ensure readability */
   /* Add any other styles as needed */
 }
+
