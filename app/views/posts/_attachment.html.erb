@@ -2,7 +2,7 @@
 
     <% if post.media.attached? %>
         <% if post.media.image? %>
-            <%= image_tag(post.media, class:"rounded w-100") %>
+            <%= link_to image_tag(post.media, class:"rounded w-100"), post_path(post) %>
         <% elsif post.media.video? %> 
             <%= video_tag(url_for(post.media), class:"w-100", controls:"") %>
         <% end %>

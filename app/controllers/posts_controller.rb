@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy upvote downvote vote]
+  before_action :authorize_user
 
   def index
     @posts = Post.non_exclusif
@@ -22,7 +23,11 @@ class PostsController < ApplicationController
 
     case params[:type]
     when 'upvote'
-      @post.upvote!(current_user)
+      if current_user
+        @post.upvote!(current_user)
+      else
+        return redirect_to new_user_registration_path, alert: "Sign up first"
+      end 
     when 'downvote'
       @post.downvote!(current_user)
     else 
@@ -128,4 +133,12 @@ class PostsController < ApplicationController
         notifications_to_mark_as_read.update_all(read_at: Time.new)
       end
     end
+
+
+    def authorize_user
+      unless current_user 
+        redirect_to new_user_registration_path, alert: "Sign up first"
+      end
+    end
+
 end

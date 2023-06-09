@@ -29,7 +29,7 @@
 .navlink{
     margin: .3em;
     padding: .4em;
-    font-size: 1.8em;
+    font-size: x-large;
     border-radius: 20px;
     display: block;
     text-decoration: none;
@@ -206,8 +206,10 @@
 }
 
 .btn-form{
-  width: 100px;
+  width: 150px;
   margin: 20px;
+  padding: 20px;
+
 }
 
 div.input-group label.label-colored {
@@ -219,4 +221,12 @@ div.input-group label.label-colored {
 .sm-max-widthed{
   width: 90vw;
   max-width: 400px;
+}
+
+
+#flash {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

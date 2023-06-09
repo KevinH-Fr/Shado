@@ -3,24 +3,25 @@
 
   <div class="row">
     <div class="col-2 m-0 p-0 px-1">
-      <%= image_tag(post.athlete.profile_pic, class:"profile-pic-mini") if post.athlete.profile_pic.present? %>
+      <%= link_to image_tag(post.athlete.profile_pic, class:"profile-pic-mini"), athlete_path(post.athlete) if post.athlete.profile_pic.present? %>
     </div>
     <div class="col-10 px-2">
-      <span class="fw-bold"> <%= athlete_full_name(post.athlete_id) %></span> 
+      <span class="fw-bold"> <%= link_to athlete_full_name(post.athlete_id), athlete_path(post.athlete), class:"no-underline" %></span> 
       <small> <%= time_ago_in_words(post.created_at) %> ago </small> <br> 
       <div class="my-4"> <%= post.content %> </div>
       <%= render 'posts/attachment', post: post %>
 
       <div class="flex-element-text-start ms-1 mt-1">
-        <%= button_to vote_post_path(post, type: :upvote), method: :patch, class: "btn-like" do %>
-          <i class="fa fa-sm fa-solid fa-heart"></i>
-          <span><%= upvote_label(post, current_user) %></span>
-        <% end %>
 
-        <%= link_to post_path(post), class: "btn-main" do %>
-          <i class= "fa fa-sm fa-solid fa-comment"></i>  
-          <span>  <%= post.comments.count %> </span>       
-        <% end %>
+          <%= button_to vote_post_path(post, type: :upvote), method: :patch, class: "btn-like" do %>
+            <i class="fa fa-sm fa-solid fa-heart"></i>
+            <span><%= upvote_label(post, current_user) %></span>
+          <% end %>
+
+          <%= link_to post_path(post), class: "btn-main" do %>
+            <i class= "fa fa-sm fa-solid fa-comment"></i>  
+            <span>  <%= post.comments.count %> </span>       
+          <% end %>
       </div>
     
     </div>

@@ -8,8 +8,8 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="text-center">
-        <%= link_to "Fan", url_for(role: "fan"), class: "btn btn-success btn-form" %>
-        <%= link_to "Athlete", url_for(role: "athlete"), class: "btn btn-warning btn-form" %>
+        <%= link_to "Fan", url_for(role: "fan"), class: "btn btn-success btn-form fw-bold" %>
+        <%= link_to "Athlete", url_for(role: "athlete"), class: "btn btn-warning btn-form fw-bold" %>
       </div>
 
        <% if params[:role] == "fan" %>
@@ -105,6 +105,12 @@
        <i class="fa-solid fa-xl fa-square-check"></i> 
         <span class="fw-bold ms-2"> SIGN UP</span>
       </button>
+
+      <div class="text-dark fw-bold text-center">
+        <small>you already have an account ?</small>
+        <%= link_to "Log in", new_session_path(resource_name) %><br />
+
+      </div>
 
       <% end %>
 
