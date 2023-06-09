@@ -29,7 +29,7 @@
 .navlink{
     margin: .3em;
     padding: .4em;
-    font-size: x-large;
+    font-size: 1.8em;
     border-radius: 20px;
     display: block;
     text-decoration: none;
@@ -216,3 +216,7 @@ div.input-group label.label-colored {
   /* Add any other styles as needed */
 }
 
+.sm-max-widthed{
+  width: 90vw;
+  max-width: 400px;
+}

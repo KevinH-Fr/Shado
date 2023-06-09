@@ -1,10 +1,8 @@
 
 <h1>Home</h1>
 
-Bienvenue 
-<%= user_name(current_user.id) %>
-
 <% if @partial_role %>
+    Bienvenue  <%= user_name(current_user.id) %>
     <hr>
 
     Vous êtes connecté(e) en tant que <%= user_role(current_user.id) %>
@@ -18,5 +16,15 @@ Bienvenue
         mieux integrer créa compte athlete ou fan à user
     %>
     
+    <h4 class="mt-4">Tous les posts</h4>
+
+    <div id="posts">
+    <% @posts.each do |post| %>
+        <%= render post %>
+        
+    <% end %>
+    </div>
+
+
 <% end %>
 

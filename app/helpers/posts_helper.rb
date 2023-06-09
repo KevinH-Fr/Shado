@@ -1,12 +1,14 @@
 module PostsHelper
     def upvote_label(post, user)
-        label_text = if user.voted_up_on? post
-                       # "unvote"
-                    else 
-                       # "upvote"
-                    end
-        tag.span do
-            "#{post.cached_votes_up} #{label_text}"
+        if current_user 
+            label_text = if user.voted_up_on? post
+                        # "unvote"
+                        else 
+                        # "upvote"
+                        end
+            tag.span do
+                "#{post.cached_votes_up} #{label_text}"
+            end
         end
     end 
 
