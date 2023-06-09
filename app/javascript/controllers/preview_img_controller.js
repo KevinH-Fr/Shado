@@ -4,12 +4,10 @@ export default class extends Controller {
   static targets = ["preview"];
 
   connect() {
-    console.log("Stimulus preview img connected.");
+    console.log("Stimulus preview image controller connected.");
   }
 
-  previewImageFan(event) {
-    console.log("call img preview.");
-
+  previewImage(event) {
     const input = event.target;
     const previewContainer = this.previewTarget;
 
