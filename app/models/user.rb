@@ -9,8 +9,14 @@ class User < ApplicationRecord
   has_one :fan
   has_one :athlete
 
+
+ # has_many :campaigns
+
   has_many :notifications, as: :recipient, dependent: :destroy
 
-  accepts_nested_attributes_for :fan, :athlete
+  accepts_nested_attributes_for :fan, :athlete 
+ # after_initialize :build_athlete  # Add this callback to initialize the athlete object
+
+
 
 end

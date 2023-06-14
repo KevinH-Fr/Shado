@@ -21,8 +21,8 @@ class HomeController < ApplicationController
     elsif current_user && user_role(current_user) == "athlete" 
       @partial_role = 'athlete_infos'
 
-      @campaigns = @athlete.campaigns
-      @followers = Fan.all
+    #  @campaigns = @athlete.campaigns 
+    #  @followers = @athlete.fans
     end
 
 

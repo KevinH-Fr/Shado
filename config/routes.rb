@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'steps_athlete/step1'
+  get 'steps_athlete/step2'
+  get 'steps_athlete/step3'
+  resources :admin_parameters
   get 'search/index'
   resources :sports
   resources :subscriptions

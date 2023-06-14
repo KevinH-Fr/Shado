@@ -28,8 +28,17 @@
     </div>
 
     <div class="input-group my-2">
+      <%= form.label :user_id, class: "input-group-text label-with-format bg-secondary text-light" %>
+      <% if athlete.persisted? %>
+        <%= form.text_field :user_id, class: "form-control field-with-format" %>
+      <% else %>
+         <%= form.text_field :user_id, value: current_user.id, class: "form-control field-with-format" %>     
+      <% end %>
+    </div>
+
+    <div class="input-group my-2">
       <%= form.label :sport, class: "input-group-text label-with-format bg-secondary text-light" %>
-      <%= form.select :sport_id, @sports.collect { |c| [c.name, c.id] }, 
+      <%#= form.select :sport_id, @sports.collect { |c| [c.name, c.id] }, 
               {include_blank: :true}, class: "form-select text-center" %>
     </div>
 
@@ -47,6 +56,8 @@
       <%= form.label :panorama_pic %>
       <%= form.file_field :panorama_pic %>
     </div>
+
+
 
     <div class="input-group my-2">
       <%#= form.text_field :user_id, value: current_user.id %>

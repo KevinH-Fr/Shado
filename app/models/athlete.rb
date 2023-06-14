@@ -7,14 +7,23 @@ class Athlete < ApplicationRecord
    has_many :campaigns
    has_many :fans, through: :campaigns
 
-   belongs_to :sport
+   
+   #belongs_to :sport
 
    belongs_to :user
+
+
 
    has_one_attached :profile_pic
    has_one_attached :panorama_pic
 
 
+   def after_create_path
+    # Customize the logic to determine the redirect path based on your requirements
+    puts " ------------- redirect to step 3"
+    steps_athlete_step3_path()
+  end
+  
   def default_profile_pic
     if profile_pic.attached?
       profile_pic

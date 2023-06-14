@@ -12,15 +12,32 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if params[:role] == "fan"
         resource.build_fan
       elsif  params[:role] == "athlete"
-        resource.build_athlete
+
+              
+
+        
+        
       end 
     end
+
   end
 
+
+  def after_sign_up_path_for(resource)
+    # Customize the logic to determine the redirect path based on your requirements
+  
+      steps_athlete_step2_path()
+   
+  end
+
+  
   # POST /resource
   # def create
-  #   super
-  # end
+    # super
+
+    # puts "----------- redirect apres create athlete"
+    # redirect_to new_campaign_path and return
+   #end
 
   # GET /resource/edit
   # def edit

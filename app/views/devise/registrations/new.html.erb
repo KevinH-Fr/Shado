@@ -10,6 +10,10 @@
       <div class="text-center">
         <%= link_to "Fan", url_for(role: "fan"), class: "btn btn-success btn-form fw-bold" %>
         <%= link_to "Athlete", url_for(role: "athlete"), class: "btn btn-warning btn-form fw-bold" %>
+
+
+        <%= link_to "Athlete steps", steps_athlete_step1_path(role: "athlete"), class: "btn btn-primary btn-form fw-bold" %>
+
       </div>
 
        <% if params[:role] == "fan" %>
@@ -75,6 +79,20 @@
             </div>
 
           <% end %>
+
+          <%# partie creation main subscription campaign for athelte %>
+
+          <div class="container bg-primary">
+            <%= f.fields_for :campaign do |h| %>
+
+              <div class="input-group my-2">
+                <%= h.label :title, class:"input-group-text label-with-format label-colored" %>
+                <%= h.text_field :title, class:"form-control " %>
+              </div>
+
+            <% end %>
+          </div>
+
 
         </div>
       <% end %>
