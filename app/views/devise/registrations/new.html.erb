@@ -1,5 +1,4 @@
 
-
 <div data-controller="preview-img" class="d-flex justify-content-center align-items-center">
   <div class="card p-4 signup-form">
     <h2 class="text-center fw-bold">Sign up</h2>
@@ -7,97 +6,33 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="text-center">
-        <%= link_to "Fan", url_for(role: "fan"), class: "btn btn-success btn-form fw-bold" %>
-        <%= link_to "Athlete", url_for(role: "athlete"), class: "btn btn-warning btn-form fw-bold" %>
+      <%#= link_to "Fan", url_for(role: "fan"), class: "btn btn-success btn-form fw-bold" %>
+      <%#= link_to "Athlete", url_for(role: "athlete"), class: "btn btn-warning btn-form fw-bold" %>
 
+      <div class="container p-4"> 
+        <%= f.fields_for :fan do |g| %>
 
-        <%= link_to "Athlete steps", steps_athlete_step1_path(role: "athlete"), class: "btn btn-primary btn-form fw-bold" %>
+          <%= g.file_field :profile_pic, id: "profile-pic-fan-input", 
+              class: "form-control", style: "display: none;", 
+              accept: "image/*", "data-action": "change->preview-img#previewImage" %>
 
-      </div>
-
-       <% if params[:role] == "fan" %>
-        <div class="container p-4"> 
-
-          <%= f.fields_for :fan do |g| %>
-
-            <%= g.file_field :profile_pic, id: "profile-pic-fan-input", 
-                class: "form-control", style: "display: none;", 
-                accept: "image/*", "data-action": "change->preview-img#previewImage" %>
-
-            <div class="text-center my-4">
-              <label for="profile-pic-fan-input">
-                <div id="profile-pic-fan-preview"  data-preview-img-target="preview">
-                  <%= image_tag("profile_default", class: "profile-pic") %> 
-                </div>
-              </label>
-            </div>
-
-            <h4 class="text-center fw-bold mb-4">Fan profile</h4>
-
-            <div class="input-group my-2">
-              <%= g.label :pseudo, class:"input-group-text label-colored" %>
-              <%= g.text_field :pseudo, class:"form-control" %>
-            </div>
-                  
-          <% end %>
-
-        </div>
-  
-      <% end %> 
-
-      <% if params[:role] == "athlete" %>
-
-        <div class="container p-4"> 
-
-          <%= f.fields_for :athlete do |g| %>
-
-            <%= g.file_field :profile_pic, id: "profile-pic-athlete-input", 
-                class: "form-control", style: "display: none;", 
-                accept: "image/*", "data-action": "change->preview-img-ath#previewImage" %>
-
-            
-            <div class="text-center my-4">
-              <label for="profile-pic-athlete-input">
-                <div id="profile-pic-athlete-preview" data-preview-img-ath-target="preview">
-                  <%= image_tag("profile_default", class: "profile-pic") %>
-                </div>
-              </label>
-            </div>
-
-            <h4 class="text-center fw-bold mb-4">Athlete profile</h4>
-
-            <div class="input-group my-2">
-              <%= g.label :name, class:"input-group-text label-with-format label-colored" %>
-              <%= g.text_field :name, class:"form-control " %>
-            </div>
-        
-            <div class="input-group my-2">
-              <%= g.label :sport, class: "input-group-text label-with-format label-colored" %>
-              <%= g.select :sport_id, @sports.collect { |c| [c.name, c.id] }, 
-                      {include_blank: :true}, class: "form-select text-center" %>
-            </div>
-
-          <% end %>
-
-          <%# partie creation main subscription campaign for athelte %>
-
-          <div class="container bg-primary">
-            <%= f.fields_for :campaign do |h| %>
-
-              <div class="input-group my-2">
-                <%= h.label :title, class:"input-group-text label-with-format label-colored" %>
-                <%= h.text_field :title, class:"form-control " %>
+          <div class="text-center my-4">
+            <label for="profile-pic-fan-input">
+              <div id="profile-pic-fan-preview"  data-preview-img-target="preview">
+                <%= image_tag("profile_default", class: "profile-pic") %> 
               </div>
-
-            <% end %>
+            </label>
           </div>
 
+          <h4 class="text-center fw-bold mb-4">Fan profile</h4>
 
-        </div>
-      <% end %>
-
-      <% if params[:role] == "athlete" || params[:role] == "fan"  %>
+          <div class="input-group my-2">
+            <%= g.label :pseudo, class:"input-group-text label-colored" %>
+            <%= g.text_field :pseudo, class:"form-control" %>
+          </div>
+                
+        <% end %>
+      </div>
 
       <div class="container px-4"> 
 
@@ -116,27 +51,26 @@
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control " %>
         </div>
 
-      </div>
+        <button type="submit" class="btn btn-primary container-fluid my-4">
+          <i class="fa-solid fa-xl fa-square-check"></i> 
+          <span class="fw-bold ms-2"> SIGN UP</span>
+        </button>
 
-
-      <button type="submit" class="btn btn-primary container-fluid my-4">
-       <i class="fa-solid fa-xl fa-square-check"></i> 
-        <span class="fw-bold ms-2"> SIGN UP</span>
-      </button>
-
-      <div class="text-dark fw-bold text-center">
-        <small>you already have an account ?</small>
-        <%= link_to "Log in", new_session_path(resource_name) %><br />
+        <div class="text-dark fw-bold text-center">
+          <small>you already have an account ?</small>
+          <%= link_to "Log in", new_session_path(resource_name) %><br />
+        </div>
 
       </div>
-
-      <% end %>
-
-      <%#= render "devise/shared/links" %>
 
     <% end %>
 
+    <%= link_to "Create Athlete Profile", steps_athlete_step1_path(role: "athlete"), 
+              class: "btn btn-secondary btn-form container-fluid my-4" %>
 
   </div>
 
 </div>
+
+
+

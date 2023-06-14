@@ -5,13 +5,8 @@
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { multipart: true }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
-        <div class="container p-4"> 
-
-
-  
-
-
-      <div class="container px-4"> 
+      
+      <div class="container p-4"> 
 
         <div class="input-group mb-2">
           <%= f.label :email, class:"input-group-text label-with-format label-colored" %>
@@ -30,42 +25,15 @@
 
       </div>
 
-
-test valeur param : <%= params[:role] %>
-
-<% if params[:role] == "athlete" %>
-    athlete
-
-
-
-        <h4 class="text-center fw-bold mb-4">Athlete profile</h4>
-
-    <%= f.fields_for :athlete do |g| %>
-
-        <div class="input-group my-2">
-            <%= g.label :name, class:"input-group-text label-with-format label-colored" %>
-            <%= g.text_field :name, class:"form-control " %>
-        </div>
-
-        <div class="input-group my-2">
-            <%= g.label :sport, class: "input-group-text label-with-format label-colored" %>
-            <%#= g.text_field :sport_id %>
-        </div>
-
-    <% end %>
-
-<% end %>
-
-
       <button type="submit" class="btn btn-primary container-fluid my-4">
-       <i class="fa-solid fa-xl fa-square-check"></i> 
+      <i class="fa-solid fa-xl fa-square-check"></i> 
         <span class="fw-bold ms-2"> SIGN UP</span>
       </button>
 
       <div class="text-dark fw-bold text-center">
         <small>you already have an account ?</small>
         <%= link_to "Log in", new_session_path(resource_name) %><br />
-
       </div>
-
-  <% end %>
+    <% end %>
+  </div>
+</div>

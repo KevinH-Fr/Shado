@@ -9,26 +9,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @sports = Sport.all
 
     super do |resource|
-      if params[:role] == "fan"
+    #  if params[:role] == "fan"
         resource.build_fan
-      elsif  params[:role] == "athlete"
-
-              
-
+    #  elsif  params[:role] == "athlete"    
         
-        
-      end 
+    #  end 
     end
 
   end
 
 
   def after_sign_up_path_for(resource)
-    # Customize the logic to determine the redirect path based on your requirements
-  
-      steps_athlete_step2_path()
-   
+    #puts " ----  athlete? #{resource.athlete.present?} ---- fan? #{resource.fan.present?}"
+    if resource.fan.present?
+      root_path
+    else
+      steps_athlete_step2_path     
+    end
   end
+  
 
   
   # POST /resource

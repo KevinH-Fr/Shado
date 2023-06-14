@@ -1,13 +1,6 @@
-<div class="image_wrapper">
-  <div class="sized">
-    <%= image_tag(athlete.panorama_pic, class: "panorama-img rounded-top") if athlete.panorama_pic.present? %> 
-  </div>
-</div>
-<div class="profile-pic-overlay">
-  <%= image_tag(athlete.profile_pic, class: "profile-pic") if athlete.profile_pic.present? %> 
-</div>
 
-<div class="card-body pt-5 profile-card-text">
+<div data-controller="preview-img" class="d-flex justify-content-center align-items-center">
+  <div class="card p-4 signup-form">
 
   <%= form_with(model: athlete) do |form| %>
     <% if athlete.errors.any? %>
@@ -22,10 +15,33 @@
       </div>
     <% end %>
 
-    <div class="input-group my-2">
-      <%= form.label :name, class: "input-group-text label-with-format bg-secondary text-light" %>
-      <%= form.text_field :name, class: "form-control field-with-format" %>
-    </div>
+    
+        <%= form.file_field :profile_pic, id: "profile-pic-athlete-input", 
+            class: "form-control", style: "display: none;", 
+            accept: "image/*", "data-action": "change->preview-img-ath#previewImage" %>
+
+        
+        <div class="text-center my-4">
+          <label for="profile-pic-athlete-input">
+            <div id="profile-pic-athlete-preview" data-preview-img-ath-target="preview">
+              <%= image_tag("profile_default", class: "profile-pic") %>
+            </div>
+          </label>
+        </div>
+
+        <h4 class="text-center fw-bold mb-4">Athlete profile</h4>
+
+        <div class="input-group my-2">
+          <%= form.label :name, class:"input-group-text label-with-format label-colored" %>
+          <%= form.text_field :name, class:"form-control " %>
+        </div>
+    
+        <div class="input-group my-2">
+          <%= form.label :sport, class: "input-group-text label-with-format label-colored" %>
+          <%#= form.select :sport_id, @sports.collect { |c| [c.name, c.id] }, 
+                  {include_blank: :true}, class: "form-select text-center" %>
+        </div>
+
 
     <div class="input-group my-2">
       <%= form.label :user_id, class: "input-group-text label-with-format bg-secondary text-light" %>
@@ -36,27 +52,12 @@
       <% end %>
     </div>
 
-    <div class="input-group my-2">
-      <%= form.label :sport, class: "input-group-text label-with-format bg-secondary text-light" %>
-      <%#= form.select :sport_id, @sports.collect { |c| [c.name, c.id] }, 
-              {include_blank: :true}, class: "form-select text-center" %>
-    </div>
+
 
     <div class="input-group my-2">
       <%= form.label :bio, class: "input-group-text label-with-format bg-secondary text-light" %>
       <%= form.text_area :bio, class: "form-control field-with-format" %>
     </div>
-
-    <div class="input-group my-2">
-      <%= form.label :profile_pic %>
-      <%= form.file_field :profile_pic %>
-    </div>
-
-    <div class="input-group my-2">
-      <%= form.label :panorama_pic %>
-      <%= form.file_field :panorama_pic %>
-    </div>
-
 
 
     <div class="input-group my-2">
@@ -70,4 +71,8 @@
     </div>
 
   <% end %>
+</div>
+
+</div>
+
 </div>
