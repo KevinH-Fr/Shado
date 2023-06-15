@@ -1,6 +1,6 @@
 module CampaignsHelper
     def campaign_label(campaign)
-        if campaign == false
+        if campaign.periodicity == true
             "Annuelle"
         else 
             "Ponctuelle"

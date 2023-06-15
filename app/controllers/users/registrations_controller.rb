@@ -20,7 +20,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
   def after_sign_up_path_for(resource)
-    #puts " ----  athlete? #{resource.athlete.present?} ---- fan? #{resource.fan.present?}"
     if resource.fan.present?
       root_path
     else

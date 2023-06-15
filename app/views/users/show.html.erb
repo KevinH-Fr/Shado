@@ -1,8 +1,6 @@
 
 <% if user_signed_in? %>
   
-  <p style="color: green"><%= notice %></p>
-
   <% if @fan.present? %>
     <%= render partial: 'fans/fan', locals: { fan: @fan } %>
   <% end %>

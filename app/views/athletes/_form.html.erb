@@ -43,15 +43,11 @@
         </div>
 
 
-    <div class="input-group my-2">
-      <%= form.label :user_id, class: "input-group-text label-with-format bg-secondary text-light" %>
       <% if athlete.persisted? %>
-        <%= form.text_field :user_id, class: "form-control field-with-format" %>
+        <%= form.hidden_field :user_id, class: "form-control field-with-format" %>
       <% else %>
-         <%= form.text_field :user_id, value: current_user.id, class: "form-control field-with-format" %>     
+         <%= form.hidden_field :user_id, value: current_user.id, class: "form-control field-with-format" %>     
       <% end %>
-    </div>
-
 
 
     <div class="input-group my-2">
