@@ -1,17 +1,21 @@
 class CampaignsController < ApplicationController
   before_action :set_campaign, only: %i[ show edit update destroy ]
 
-  # GET /campaigns or /campaigns.json
   def index
     @athlete = Athlete.find(params[:athlete_id])
-    @campaigns = @athlete.campaigns
+
+    campaign_type = params[:campaign_type]
+
+    if campaign_type == "main"
+      @campaigns = @athlete.campaigns.where(periodicity: true )
+    else 
+      @campaigns = @athlete.campaigns
+    end
   end
 
-  # GET /campaigns/1 or /campaigns/1.json
   def show
   end
 
-  # GET /campaigns/new
   def new
     #@campaign = Campaign.find(params[:id])
     @campaign = Campaign.new
@@ -19,11 +23,9 @@ class CampaignsController < ApplicationController
     # Additional code for the new action
   end
 
-  # GET /campaigns/1/edit
   def edit
   end
 
-  # POST /campaigns or /campaigns.json
   def create
     @campaign = Campaign.new(campaign_params)
 
@@ -38,7 +40,6 @@ class CampaignsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /campaigns/1 or /campaigns/1.json
   def update
     respond_to do |format|
       if @campaign.update(campaign_params)
@@ -51,7 +52,6 @@ class CampaignsController < ApplicationController
     end
   end
 
-  # DELETE /campaigns/1 or /campaigns/1.json
   def destroy
     @campaign.destroy
 
@@ -62,12 +62,10 @@ class CampaignsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_campaign
       @campaign = Campaign.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def campaign_params
       params.require(:campaign).permit(:title, :description, :periodicity, :subscription, :target, :start, :end, :athlete_id)
     end

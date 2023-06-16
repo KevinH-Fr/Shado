@@ -1,0 +1,35 @@
+<div class="card card-main" id="<%= dom_id campaign %>">
+
+
+  <p>
+    <strong>Athlete:</strong>
+    <%= athlete_full_name(campaign.athlete_id) %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= campaign.description %>
+  </p>
+
+  <p>
+    <strong>Subscription:</strong>
+    <%=number_to_currency(campaign.subscription) %>
+    / month
+  </p>
+
+  <p>
+    Hey, 
+    <span class="fw-bold"><%= fan_full_name(user_fan.id) %> </span>
+
+    you are about to subscribe to 
+     <span class="fw-bold"><%= athlete_full_name(campaign.athlete_id) %> </span>. <br>
+    
+    Keep in mind that this subscription is a donation
+    that will help
+     <span class="fw-bold"><%= athlete_full_name(campaign.athlete_id) %> </span>
+    fullfill his dream bla bla. 
+  </p>
+
+  <%= link_to "gotopayment", steps_subscribe_step2_path, class: "btn btn-primary" %>
+</div>
+

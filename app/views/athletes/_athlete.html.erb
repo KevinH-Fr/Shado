@@ -1,19 +1,28 @@
 <div class="card card-profile mb-4" id="<%= dom_id athlete %>">
   <div class="image_wrapper">
     <div class="sized">
-      <%= image_tag(athlete.default_panorama_pic, class: "panorama-img rounded-top") %> 
+      <%=link_to image_tag(athlete.default_panorama_pic, class: "panorama-img rounded-top"), athlete_path(athlete)  %> 
     </div>
   </div>
   <div class="profile-pic-overlay">
-    <%= image_tag(athlete.default_profile_pic, class: "profile-pic") %> 
+    <%=link_to image_tag(athlete.default_profile_pic, class: "profile-pic"), athlete_path(athlete) %> 
   </div>
   <div class="card-body pt-5 profile-card-text">
-    <p class="card-text"><%= athlete.name %></p>
+    <h4 class="card-text"><%= link_to athlete.name, athlete_path(athlete),class:"no-underline" %></h4>
     <p class="card-text"><strong>Sport:</strong> <%= Sport.find(athlete.sport_id).name if athlete.sport_id.present?  %></p>
     <p class="card-text"><strong>Bio:</strong> <%= athlete.bio %></p>
     <%= link_to "Voir", athlete_path(athlete), class: "btn btn-sm btn-primary fa-solid fa-eye m-1" %>
     <%#= button_to "", edit_athlete_path(athlete), method: :post, class: "btn btn-sm btn-secondary fa-solid fa-pen-to-square m-1" %>
     <%= link_to "Campaigns", campaigns_path(athlete_id: athlete), class: "btn btn-sm btn-warning fa-solid fa-star m-1" %>
+    <br>  
+
+    <%#= link_to "Subscribe", campaigns_path(athlete_id: athlete, campaign_type: 'main'), 
+        class: "w-100 btn btn-sm btn-outline-primary fa-solid m-1" %>
+
+    <%= link_to "Subscribe", steps_subscribe_step1_path(athlete: athlete), 
+        class: "w-100 btn btn-sm btn-outline-primary fa-solid m-1" %>
+
+
   </div>
 </div>
 

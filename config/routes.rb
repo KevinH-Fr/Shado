@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'steps_subscribe/step1'
+  get 'steps_subscribe/step2'
   get 'steps_athlete/step1'
   get 'steps_athlete/step2'
   get 'steps_athlete/step3'
