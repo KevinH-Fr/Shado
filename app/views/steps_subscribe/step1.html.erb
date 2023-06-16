@@ -8,7 +8,5 @@
 
 <%= render "campaigns/main_campaign", campaign: @campaign %>
 
-<%= render "subscriptions/form_main_subscription", subscription: @subscription %>
 
-
-<%#= link_to "Go to payment", steps_subscribe_step2_path, class: "w-100 btn btn-primary" %>
+<%= link_to "Go to payment", steps_subscribe_step2_path(athlete: @campaign.athlete), class: "w-100 btn btn-primary" %>

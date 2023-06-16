@@ -24,7 +24,7 @@ class SubscriptionsController < ApplicationController
 
     respond_to do |format|
       if @subscription.save
-        format.html { redirect_to steps_subscribe_step2_path, notice: "Subscription was successfully created." }
+        format.html { redirect_to steps_subscribe_step3_path, notice: "Subscription was successfully created." }
         format.json { render :show, status: :created, location: @subscription }
       else
         format.html { render :new, status: :unprocessable_entity }

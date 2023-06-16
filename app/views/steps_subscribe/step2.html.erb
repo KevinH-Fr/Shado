@@ -8,7 +8,22 @@
 <hr>
 
 <p>
-    Payment details and confirmation
+
+    ventilation price: <br>
+
+    Net Athlete: <%= number_to_currency(@netAthlete) %> <br>
+    Platform Fees: <%= number_to_currency(@platformFees.to_f) %> <br>
+
+    Payment Fees: <%= number_to_currency(@paymentFees) %><br>
+
+    <hr>
+    <strong> 
+      total: <%= number_to_currency(@campaign.subscription) %> <br>
+    </strong>
 </p>
 
-<%= link_to "Go to step3", steps_subscribe_step3_path, class: "w-100 btn btn-primary" %>
+<%= render "subscriptions/form_main_subscription", subscription: @subscription %>
+
+
+
+<%#= link_to "Go to step3", steps_subscribe_step3_path, class: "w-100 btn btn-primary" %>
