@@ -4,7 +4,7 @@ class AthletesController < ApplicationController
   def index
 
     @fan = Fan.where(user_id: current_user.id).first if current_user
-    # @athletes_suivis = @fan.athletes if @fan.present?
+    @athletes_suivis = @fan.athletes if @fan.present?
  
     @q = Athlete.ransack(params[:q])
 

@@ -1,21 +1,36 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Athletes suivis</h1>
-
-<% if @athletes_suivis.present? %>
-  <div id="athletes">
-    <% @athletes_suivis.each do |athlete| %>
-      <%= render athlete %>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="myAthletes-tab" data-bs-toggle="tab" data-bs-target="#myAthletes-tab-pane" 
+      type="button" role="tab" aria-controls="myAthletes-tab-pane" aria-selected="true">
+        My Athletes
+    </button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="allAthletes-tab" data-bs-toggle="tab" data-bs-target="#allAthletes-tab-pane" 
+      type="button" role="tab" aria-controls="allAthletes-tab-pane" aria-selected="false">
+        All Athletes
+      </button>
+  </li>
+</ul>
+<div class="tab-content mt-2" id="myTabContent">
+  <div class="tab-pane fade show active" id="myAthletes-tab-pane" role="tabpanel" aria-labelledby="myAthletes-tab" tabindex="0">
+  
+    <% if @athletes_suivis.present? %>
+      <div id="athletes">
+        <% @athletes_suivis.each do |athlete| %>
+          <%= render athlete %>
+        <% end %>
+      </div>
     <% end %>
+
   </div>
-<% end %>
-
-<hr>
-
-<h1>Tous les athletes</h1>
-
-<div id="athletes">
-  <% @athletes.each do |athlete| %>
-    <%= render athlete %>
-  <% end %>
+  <div class="tab-pane fade" id="allAthletes-tab-pane" role="tabpanel" aria-labelledby="allAthletes-tab" tabindex="0">
+    <div id="athletes">
+      <% @athletes.each do |athlete| %>
+        <%= render athlete %>
+      <% end %>
+    </div>
+  </div>
 </div>
+
