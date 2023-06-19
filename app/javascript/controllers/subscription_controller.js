@@ -3,47 +3,54 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
   // champs dans le form resultat
-  static targets = ["prixBrutInitial", "prixNetInitial", "prixInitial", "spanTotal", "spanNet", "spanPlatformFeesInitial",
-                    "platformFeesInitial", "paymentFeesInitial"];
+  static targets = 
+    ["brut", "prixBrutInitial", "prixNetInitial", "prixInitial",  "platformFeesInitial", "paymentFeesInitial",
+    "spanNet",  "spanTotal", "spanPlatformFeesInitial", "spanPaymentFeesInitial"];
 
   toggleFees(event) {
     event.preventDefault();
     const button = event.currentTarget;
     const totalSpan = this.spanTotalTarget;
     const netSpan = this.spanNetTarget;
+    const paymentFeesInitialSpan = this.spanPaymentFeesInitialTarget;
     const platformFeesInitialSpan = this.spanPlatformFeesInitialTarget;
+    const brutField = this.prixInitialTarget;
 
     if (totalSpan.textContent === this.prixBrutInitialTarget.value) {
-      this.prixInitialTarget.value = this.prixInitialTarget.value * 1.05;
+      // cover fees 
       button.textContent = "Uncover the fees";
-      totalSpan.textContent =parseFloat(this.prixInitialTarget.value).toFixed(2);
       netSpan.textContent = parseFloat(this.prixBrutInitialTarget.value).toFixed(2);
-      platformFeesInitialSpan.textContent = this.platformFeesInitialTarget.value;
+      platformFeesInitialSpan.textContent = parseFloat(this.platformFeesInitialTarget.value).toFixed(2);
+      paymentFeesInitialSpan.textContent = parseFloat(this.paymentFeesInitialTarget.value).toFixed(2);
+      
+      var totalPrice = parseFloat(this.prixInitialTarget.value) + parseFloat(this.platformFeesInitialTarget.value) + parseFloat(this.paymentFeesInitialTarget.value);
+      totalSpan.textContent = totalPrice.toFixed(2);
+      brutField.value = totalPrice.toFixed(2);
 
     } else {
+      // uncover fees - initial price
       this.prixInitialTarget.value = this.prixBrutInitialTarget.value;
       button.textContent = "Cover the fees";
       totalSpan.textContent = parseFloat(this.prixBrutInitialTarget.value).toFixed(2);
       netSpan.textContent = parseFloat(this.prixNetInitialTarget.value).toFixed(2);
-      platformFeesInitialSpan.textContent = (this.prixInitialTarget.value * 1.05) * 0.1;
+      platformFeesInitialSpan.textContent = parseFloat(this.platformFeesInitialTarget.value).toFixed(2);
+      paymentFeesInitialSpan.textContent = parseFloat(this.paymentFeesInitialTarget.value).toFixed(2);
+      brutField.value =parseFloat(this.prixBrutInitialTarget.value).toFixed(2);
 
     }
   }
   
-
   connect() {
-    console.log("test connect controller sub")
-    console.log("intial brut prix: " +  this.prixBrutInitialTarget.value )
-    console.log("platform fee ini: " +  this.platformFeesInitialTarget.value )
-
-    const totalSpan = document.getElementById("span-total");
+    console.log("connect controller sub")
+    const totalSpan = this.spanTotalTarget;
     const netSpan = this.spanNetTarget;
-
-    const platformFeesInitialSpan = this.platformFeesInitialTarget;
-    platformFeesInitialSpan.textContent = this.platformFeesInitialTarget.value;
+    const platformFeesInitialSpan = this.spanPlatformFeesInitialTarget;
+    const paymentFeesInitialSpan = this.spanPaymentFeesInitialTarget;
 
     totalSpan.textContent = parseFloat(this.prixBrutInitialTarget.value).toFixed(2);
     netSpan.textContent = parseFloat(this.prixNetInitialTarget.value).toFixed(2);
+    platformFeesInitialSpan.textContent = parseFloat(this.platformFeesInitialTarget.value).toFixed(2);
+    paymentFeesInitialSpan.textContent = parseFloat(this.paymentFeesInitialTarget.value).toFixed(2);
 
   }
 
