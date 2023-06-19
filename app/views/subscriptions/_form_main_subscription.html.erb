@@ -11,6 +11,22 @@
     </div>
   <% end %>
 
+  <div data-controller="subscription">
+
+          <%= form.hidden_field :prixBrutInitial, 
+              value: @totalPrice, 
+              data: { 
+                subscription_target: "prixBrutInitial" } %>
+
+          <%= form.text_field :brut, 
+              value: @totalPrice, 
+              data: { 
+                subscription_target: "prixInitial" } %>
+
+
+      <%= button_tag "Cover the fees", data: { action: "click->subscription#coverFees" }, class: "btn btn-success" %>
+      <%= button_tag "Uncover the fees", data: { action: "click->subscription#uncoverFees" }, class: "btn btn-danger" %>
+
   <div>
     <%#= form.label :campaign_id, style: "display: block" %>
     <%= form.hidden_field :campaign_id, value: @campaign.id %>
@@ -21,10 +37,17 @@
     <%= form.hidden_field :fan_id, value: @fan.id %>
   </div>
 
+    <div>
+
+  </div>
+
      <div class="container-fluid text-end mt-2 p-2"> 
         <button type="submit" class="w-100 btn btn-primary">
           <span><i class="bi bi-check"></i> Create</span>
         </button>
       </div>
+
+  
+  </div>
 
 <% end %>

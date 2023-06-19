@@ -22,6 +22,8 @@ class StepsSubscribeController < ApplicationController
 
     @netAthlete = @totalPrice - @platformFees - @paymentFees
 
+   
+
   end
 
   def step3

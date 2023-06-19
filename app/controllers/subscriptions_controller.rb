@@ -14,6 +14,7 @@ class SubscriptionsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @fan = Fan.where(user_id: current_user.id).first
 
+
   end
 
   def edit
@@ -21,6 +22,7 @@ class SubscriptionsController < ApplicationController
 
   def create
     @subscription = Subscription.new(subscription_params)
+
 
     respond_to do |format|
       if @subscription.save

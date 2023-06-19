@@ -1,12 +1,15 @@
-<h1>StepsSubscribe#step1</h1>
+<h1 class="text-center">Subscriptions details </h1>
 
 <div class="progress">
   <div class="progress-bar" role="progressbar" aria-label="Basic example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
-1 out of 3
-<hr>
+
+<div class="mb-3 text-end"> Step 
+  <span class="fw-bold"> 1 </span>
+  out of 
+  <span class="fw-bold"> 3 </span>
+ 
+</div>
 
 <%= render "campaigns/main_campaign", campaign: @campaign %>
 
-
-<%= link_to "Go to payment", steps_subscribe_step2_path(athlete: @campaign.athlete), class: "w-100 btn btn-primary" %>
