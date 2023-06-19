@@ -14,22 +14,17 @@
 <div class="card-with-effect" >
 <p>
 
+
    <div class="fw-bold"> ventilation price: </div> <hr>
 
-    Net Athlete: <%= number_to_currency(@netAthlete) %> <br>
-    Platform Fees: <%= number_to_currency(@platformFees.to_f) %> <br>
+     <%#= number_to_currency(@netAthlete) %> 
+     <%#= number_to_currency(@platformFees.to_f) %> 
+ <%#= number_to_currency(@paymentFees) %>
 
-    Payment Fees: <%= number_to_currency(@paymentFees) %><br>
-
-    <hr>
-    <strong> 
-      total: <%= number_to_currency(@campaign.subscription) %> <br>
-    </strong>
-</p>
 
 <%= render "subscriptions/form_main_subscription", subscription: @subscription %>
 
-
+</div>
 
 <%#= link_to "Go to step3", steps_subscribe_step3_path, class: "w-100 btn btn-primary" %>
 
