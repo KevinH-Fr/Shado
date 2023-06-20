@@ -20,9 +20,11 @@ class StepsSubscribeController < ApplicationController
     @platformFees = @totalPrice * ( @remuneration.to_f / 100)
     @paymentFees = @totalPrice * ( 1.5 / 100)
 
-    @netAthlete = @totalPrice - @platformFees - @paymentFees
+    @paymentFeesForfait = 0.5
+    @paymentFeesPourcentage = 0.1
+    @paymentFeesPourcentageApplied = @paymentFeesPourcentage * @totalPrice
 
-   
+    @netAthlete = @totalPrice - @platformFees - @paymentFeesForfait - @paymentFeesPourcentageApplied
 
   end
 
