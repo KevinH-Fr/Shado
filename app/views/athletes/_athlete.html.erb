@@ -37,6 +37,12 @@
     <% end %> 
 
 
+    <%# bouton edit athlete si current user est athelete en question %>
+
+    <% if current_user.present? && user_athlete == athlete.id %>
+      <%= button_to "", edit_athlete_path(athlete), method: :post, class: "btn btn-sm btn-secondary fa-solid fa-pen-to-square m-1" %>
+    <% end %>
+
   </div>
 </div>
 
