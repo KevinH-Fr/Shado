@@ -55,6 +55,11 @@
     <%= form.hidden_field :periodicity, value: true %>
   </div>
 
+  <div class= "mt-3 p-0">
+    <%#= form.label :thankyounote, style: "display: block" %>
+    <%= form.text_area :thankyounote, placeholder: "thanks a lot for donating !", class: "form-control createpostdesign" %>
+  </div>
+
 
   <% if campaign.persisted? %>
     <%= form.hidden_field :athlete_id %>

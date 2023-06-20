@@ -46,6 +46,11 @@
     <%= form.date_field :end %>
   </div>
 
+  <div>
+    <%= form.label :thankyounote, style: "display: block" %>
+    <%= form.text_area :thankyounote, placeholder: "thanks a lot for donating !" %>
+  </div>
+
   <% if campaign.persisted? %>
     <%= form.hidden_field :athlete_id %>
   <% else %>

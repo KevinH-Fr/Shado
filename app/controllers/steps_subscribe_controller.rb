@@ -29,6 +29,14 @@ class StepsSubscribeController < ApplicationController
   end
 
   def step3
+
+ #   @campaignThankNote = @campaign.thankyounote
+    @fan =  Fan.find(user_role_id(current_user))
+
+   @lastSubscriptionByFan = Subscription.where(fan_id: @fan.id).last
+   @campaign = Campaign.find(@lastSubscriptionByFan.campaign_id)
+   @thankyounote = @campaign.thankyounote
+
   end
 
 end
