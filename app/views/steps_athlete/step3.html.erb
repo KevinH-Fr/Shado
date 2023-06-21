@@ -25,23 +25,29 @@
 
 <h4>Set my monthly price </h4>
 
-<div id="radio_buttons_group" class="btn-group" role="group" aria-label="Basic radio toggle button group">
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value="9.99" checked>
-  <label class="btn btn-outline-primary" for="btnradio1">9.99 €</label>
+<div data-controller="subscription-value">
 
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="19.99">
-  <label class="btn btn-outline-primary" for="btnradio2">19.99 €</label>
+  <div id="radio_buttons_group" class="btn-group" role="group" aria-label="Basic radio toggle button group">
+    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" value="9.99" checked
+      data-action="change->subscription-value#handleChange">
+    <label class="btn btn-outline-primary" for="btnradio1">9.99 €</label>
 
-  <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value="49.99">
-  <label class="btn btn-outline-primary" for="btnradio3">49.99 €</label>
+    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" value="19.99"
+      data-action="change->subscription-value#handleChange">
+    <label class="btn btn-outline-primary" for="btnradio2">19.99 €</label>
+
+    <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" value="49.99"
+      data-action="change->subscription-value#handleChange">
+    <label class="btn btn-outline-primary" for="btnradio3">49.99 €</label>
+  </div>
+
+  <div>
+    <%#= form.label :subscription, style: "display: block" %>
+    <%= form.text_field :subscription, id: "subscription_field" %>
+    <%= hidden_field_tag :selected_subscription, nil, id: "selected_subscription_field" %>
+  </div>
+
 </div>
-
-<div>
-  <%#= form.label :subscription, style: "display: block" %>
-  <%= form.hidden_field :subscription, id: "subscription_field" %>
-  <%= hidden_field_tag :selected_subscription, nil, id: "selected_subscription_field" %>
-</div>
-
 <br>
 
   <div class= "m-0 p-0">
@@ -75,15 +81,3 @@
 
 <% end %>
 
-
-<script>
-  const radioButtonsGroup = document.getElementById('radio_buttons_group');
-  const subscriptionField = document.getElementById('subscription_field');
-  const selectedSubscriptionField = document.getElementById('selected_subscription_field');
-
-  radioButtonsGroup.addEventListener('change', (event) => {
-    const selectedValue = event.target.value;
-    subscriptionField.value = selectedValue;
-    selectedSubscriptionField.value = selectedValue;
-  });
-</script>
