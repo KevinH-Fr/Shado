@@ -1,6 +1,5 @@
 
 
-<div class="card border-white card-profile mb-2 custom-rounded">
 
     <%= form_with(model: athlete) do |form| %>
       <% if athlete.errors.any? %>
@@ -16,6 +15,26 @@
 
 
 <div data-controller="preview-img">
+<div class="card border-white card-profile mb-2 custom-rounded">
+
+  <div class="image_wrapper">
+    <div class="sized">
+      <%= form.file_field :panorama_pic, id: "pano-pic-athlete-input", 
+        class: "form-control", style: "display: none;", 
+        accept: "image/*", "data-action": "change->preview-img#previewpano" %>
+
+      <div class="text-center ">
+        <label for="pano-pic-athlete-input">
+          <div id="pano-pic-athlete-preview" data-preview-img-target="previewpano">
+            <%= image_tag(athlete.default_panorama_pic, class: "panorama-img custom-rounded bg-warning") %>
+            <%# voir comment gérer la taille de pano pic avant modif , style: "width: 500px;")%>
+            <i class="fa fa-edit text-light fw-bold" style="position: absolute; top: 50%; left: 80%; transform: translate(-50%, -50%);"></i>
+          </div>
+        </label>
+      </div>
+
+    </div>
+  </div>
 
   <div class="profile-pic-overlay">
     <%= form.file_field :profile_pic, id: "profile-pic-athlete-input", 
@@ -30,24 +49,6 @@
         </div>
       </label>
     </div> 
-  </div>
-
-  <div class="image_wrapper">
-    <div class="sized">
-      <%= form.file_field :panorama_pic, id: "pano-pic-athlete-input", 
-        class: "form-control", style: "display: none;", 
-        accept: "image/*", "data-action": "change->preview-img#previewpano" %>
-
-      <div class="text-center ">
-        <label for="pano-pic-athlete-input" style="position: relative;">
-          <div id="pano-pic-athlete-preview" data-preview-img-target="previewpano">
-            <%= image_tag(athlete.default_panorama_pic, class: "panorama-img custom-rounded") %>
-            <i class="fa fa-edit text-light fw-bold" style="position: absolute; top: 50%; left: 80%; transform: translate(-50%, -50%);"></i>
-          </div>
-        </label>
-      </div>
-
-    </div>
   </div>
 
 </div>

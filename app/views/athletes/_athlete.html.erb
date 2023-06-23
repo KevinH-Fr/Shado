@@ -7,7 +7,7 @@
   <div class="profile-pic-overlay">
     <%=link_to image_tag(athlete.default_profile_pic, class: "profile-pic"), athlete_path(athlete) %> 
   </div>
-  <div class="card-body pt-5 profile-card-text">
+  <div class="card-body pt-5 profile-card-text px-4">
     <h4 class="card-text"><%= link_to athlete.name, athlete_path(athlete),class:"no-underline" %></h4>
     <p class="card-text"><strong>Sport:</strong> <%= Sport.find(athlete.sport_id).name if athlete.sport_id.present?  %></p>
     <p class="card-text"><strong>Bio:</strong> <%= athlete.bio %></p>
@@ -23,16 +23,15 @@
      <% if params[:action] == "index" %>
 
       <% campaign_main = Campaign.where(athlete_id: athlete, periodicity: true) %>
-        <% fan = Fan.where(user_id: current_user.id) %>
+      <% fan = Fan.where(user_id: current_user.id) %>
 
-                <% if subscription_presence(campaign_main, fan) %>
+        <% if subscription_presence(campaign_main, fan) %>
 
-                  <%= link_to "Unsubscribe",  subscriptions_path(), class: "w-100 btn btn-sm btn-outline-secondary fa-solid m-1" %>
-                <% else %>    
-                  <%= link_to "Subscribe", steps_subscribe_step1_path(athlete: athlete), class: "w-100 btn btn-sm btn-outline-primary  fa-solid m-1" %>
+          <%= link_to "Unsubscribe",  subscriptions_path(), class: "w-100 btn btn-sm btn-outline-secondary fa-solid m-1" %>
+        <% else %>    
+          <%= link_to "Subscribe", steps_subscribe_step1_path(athlete: athlete), class: "w-100 btn btn-sm btn-outline-primary  fa-solid m-1" %>
 
-                <% end %>
-
+        <% end %>
 
     <% end %> 
 

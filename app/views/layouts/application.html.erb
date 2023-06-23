@@ -19,7 +19,7 @@
 
   <body>
 
-    <div class="container-fluid">
+    <div class="container-fluid m-0 p-0">
       <div class="row">
         <div class="col-12 d-block d-md-none">
           <%= render partial: 'navbar/small_navbar' %>
@@ -28,9 +28,9 @@
         <div class="col-md-3 d-none d-md-block">
           <%= render partial: 'navbar/large_navbar' %>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9 m-0 p-0">
           <div class="full-height overflow-auto py-0">
-            <main class="p-4">
+            <main class="py-4 max-widthed mx-auto">
               <div id="flash" class="container-fluid">
                 <%= render partial: "layouts/flash" %>
               </div>

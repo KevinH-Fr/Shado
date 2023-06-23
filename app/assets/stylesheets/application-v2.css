@@ -69,9 +69,9 @@
 /*  CARDS */
 
 .card-main{
-    margin: .5em;
+   /* margin: .5em; */
     margin-bottom: 1em;
-    padding: .5em;
+   /* padding: .5em; */
     
 }
 
@@ -115,10 +115,23 @@
 
 }
 
+@media (max-width: 767.98px) {
+  .custom-border-radius {
+    border-radius: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .custom-border-radius {
+    border-radius: 50px;
+  }
+}
+
+
 /* CARD PROFILE  */
 
   .profile-card-text {
-    padding-left: 50px;
+  /*  padding-left: 50px;*/
   }
 
   .sized {
@@ -170,10 +183,11 @@
   }
 
   .profile-pic-mini {
-    width: 75px;
-    height: 75px;
+    width: 65px;
+    height: 65px;
     object-position: center center;
-    border-radius: 100px;
+    object-fit: cover;
+    border-radius: 50%;
     border: 5px solid white;
   }
   
@@ -256,4 +270,8 @@ div.input-group label.label-colored {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.max-widthed{
+  max-width: 800px;
 }

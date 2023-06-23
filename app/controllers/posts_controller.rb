@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authorize_user
 
   def index
-    @posts = Post.non_exclusif
+    @posts = Post.non_exclusif.order(created_at: :desc)
     @fan = Fan.find_by(user_id: current_user.id)
     @comment = Comment.new
 
