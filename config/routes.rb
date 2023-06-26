@@ -22,6 +22,11 @@ Rails.application.routes.draw do
   resources :friends
   get 'notifications/index'
   get 'dashboard/index'
+  get 'dashboard/activities'
+  get 'dashboard/revenues'
+  get 'dashboard/monetization'
+  get 'dashboard/guides'
+
   resources :associations
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
