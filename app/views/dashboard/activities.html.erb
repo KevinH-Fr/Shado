@@ -2,14 +2,13 @@
 
  <h2>Activities</h2>
 
- 
 <div class="row">
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title"> Number of subscribers following you: <%= @followers.count %> </h5>
+        <h5 class="card-title"> Number of subscribers: <%= @followers.count %> </h5>
         <p class="card-text">
-            <%= render "charts/chartLineSubAthlete" %>
+            <%= render "charts/chartLineFansAthlete" %>
         </p>
       </div>
     </div>
@@ -18,7 +17,7 @@
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title"> Number of posts: <%= @athlete.posts.count %> </h5>
+        <h5 class="card-title"> Number of posts: <%= @posts.count %> </h5>
         <p class="card-text">
           <%= render "charts/chartPieSubAthlete" %>
         </p>
@@ -26,32 +25,6 @@
     </div>
   </div>
 </div>
-
-<div class="row mt-4">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"> Number of blablabla following you: <%= @followers.count %> </h5>
-        <p class="card-text">
-           <%= render "charts/chartBarSubAthlete" %>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"> Number of blblblblb: <%= @athlete.posts.count %> </h5>
-        <p class="card-text">
-          <%#= render "charts/chartPieSubAthlete" %>
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 
 
   <hr>
