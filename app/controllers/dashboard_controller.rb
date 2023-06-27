@@ -18,7 +18,9 @@ class DashboardController < ApplicationController
 
     @posts = @athlete.posts
 
-
+    @posts_without_media = @posts.select { |post| !post.media.attached? } 
+    @posts_with_images = @posts.select { |post| post.media.attached? && post.media.image? }
+    @posts_with_videos = @posts.select { |post| post.media.attached? && post.media.video? } 
 
     
   end

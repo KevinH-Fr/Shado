@@ -19,7 +19,7 @@
       <div class="card-body">
         <h5 class="card-title"> Number of posts: <%= @posts.count %> </h5>
         <p class="card-text">
-          <%= render "charts/chartPieSubAthlete" %>
+          <%= render "charts/chartPiePostsAthlete" %>
         </p>
       </div>
     </div>
@@ -36,5 +36,7 @@
 
   <hr>
 
+posts without media: <%= @posts_without_media.count %> <br>
+posts with image: <%= @posts_with_images.count %> <br>
+posts with video: <%= @posts_with_videos.count %> <br>
 
-  
