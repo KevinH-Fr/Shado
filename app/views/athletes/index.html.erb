@@ -1,21 +1,36 @@
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="myAthletes-tab" data-bs-toggle="tab" data-bs-target="#myAthletes-tab-pane" 
-      type="button" role="tab" aria-controls="myAthletes-tab-pane" aria-selected="true">
-        My Athletes
-    </button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="allAthletes-tab" data-bs-toggle="tab" data-bs-target="#allAthletes-tab-pane" 
-      type="button" role="tab" aria-controls="allAthletes-tab-pane" aria-selected="false">
-        All Athletes
-      </button>
-  </li>
-</ul>
-<div class="tab-content mt-2" id="myTabContent">
-  <div class="tab-pane fade show active" id="myAthletes-tab-pane" role="tabpanel" aria-labelledby="myAthletes-tab" tabindex="0">
-  
+
+<div class="p-4">
+    <%= search_form_for @q, url: athletes_path, method: :get do |f| %>
+
+        <div class="form-group my-4">
+            <div class="input-group">
+                <span class="input-group-text">
+                <i class="fa fa-search"></i>
+                </span>
+                <%= f.text_field :name_cont, class: "form-control", placeholder: "Nom" %>
+            </div>
+        </div>
+
+        <div class="form-group my-4">
+          <% Sport.all.each do |sport| %>
+            <%= link_to sport.name, athletes_path(sport: sport.name), class: "btn btn-primary me-2 mb-2" %>
+          <% end %>
+          <%= link_to "Reset", athletes_path, class: "btn btn-outline-danger mb-2" %>
+        </div>
+
+        <div class="text-end">
+            <%= f.submit "Chercher", class: "btn btn-primary my-2" %>
+        </div>
+
+    <% end %>
+
+</div>
+
+
+<h2 class="my-4">   My Athletes</h2>
+      
+
     <% if @athletes_suivis.present? %>
       <div id="athletes">
         <% @athletes_suivis.each do |athlete| %>
@@ -24,13 +39,11 @@
       </div>
     <% end %>
 
+<h2>  All Athletes</h2>
+
+  <div id="athletes">
+    <% @athletes.each do |athlete| %>
+      <%= render athlete %>
+    <% end %>
   </div>
-  <div class="tab-pane fade" id="allAthletes-tab-pane" role="tabpanel" aria-labelledby="allAthletes-tab" tabindex="0">
-    <div id="athletes">
-      <% @athletes.each do |athlete| %>
-        <%= render athlete %>
-      <% end %>
-    </div>
-  </div>
-</div>
 

@@ -15,6 +15,11 @@ class AthletesController < ApplicationController
       @athletes_suivis = @fan.athletes.distinct if @fan.present?
 
     end
+
+    if params[:sport].present?
+      @athletes = Athlete.joins(:sport).where(sports: { name: params[:sport] })
+      @athletes_suivis = @athletes_suivis.joins(:sport).where(sports: { name: params[:sport] }) if @athletes_suivis.present?
+    end
     
 
 

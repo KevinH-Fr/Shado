@@ -64,7 +64,7 @@
   
       <div class="input-group my-2">
         <%= form.label :sport, class: "input-group-text label-with-format label-colored" %>
-        <%#= form.select :sport_id, @sports.collect { |c| [c.name, c.id] }, 
+        <%= form.select :sport_id, @sports.collect { |c| [c.name, c.id] }, 
                 {include_blank: :true}, class: "form-select text-center" %>
       </div>
 

@@ -8,7 +8,7 @@ class Athlete < ApplicationRecord
    has_many :fans, through: :campaigns
 
    
-   #belongs_to :sport
+   belongs_to :sport
 
    belongs_to :user
 

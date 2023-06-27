@@ -1,6 +1,7 @@
 class Sport < ApplicationRecord
     has_one_attached :icon
 
+    has_many :athletes
     def self.ransackable_attributes(auth_object = nil)
         ["name"]
     end

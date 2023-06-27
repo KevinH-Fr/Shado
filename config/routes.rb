@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admin/index'
   get 'steps_subscribe/step1'
   get 'steps_subscribe/step2'
   get 'steps_subscribe/step3'
