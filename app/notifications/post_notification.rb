@@ -4,8 +4,11 @@ class PostNotification < Noticed::Base
   
     # Define the message content of the notification
     def message
+      "post #{params[:post].id} created by "
+    end
+    
+    def user_name_label
       athlete = Athlete.find(params[:post].athlete_id).name
-      "post #{params[:post].id} created by #{athlete}"
     end
   
     # Define the URL or path for the notification

@@ -1,8 +1,3 @@
-# To deliver this notification:
-#
-# CommentNotification.with(post: @post).deliver_later(current_user)
-# CommentNotification.with(post: @post).deliver(current_user)
-
 class CommentNotification < Noticed::Base
 
   include UsersHelper
@@ -16,9 +11,12 @@ class CommentNotification < Noticed::Base
   end
 
   def message
+    "comment created on comment #{@comment.id} by "
+  end
+  
+  def user_name_label
     @comment =params[:comment]
     user = user_name(@comment.user_id)
-    "comment created on comment #{@comment.id} by #{user}"
   end
 
     # Define the URL or path for the notification

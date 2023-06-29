@@ -11,7 +11,11 @@ class LikePostNotification < Noticed::Base
       user = user_name(params[:liker])
       "post liked by #{user}"
     end
-  
+
+    def user_name_label
+      user = user_name(params[:liker])
+    end
+
     # Define the URL or path for the notification
     def url
       post_path(params[:post]) # Replace with the appropriate path helper for your app

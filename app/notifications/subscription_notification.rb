@@ -5,7 +5,11 @@ class SubscriptionNotification < Noticed::Base
     def message
       subsrcriber = Fan.find(params[:subscription].fan_id)
 
-      "subscription #{params[:subscription].id} done by  #{subsrcriber.pseudo}"
+      "subscription #{params[:subscription].id} done by "
+    end
+
+    def user_name_label
+      subsrcriber = Fan.find(params[:subscription].fan_id).pseudo
     end
   
     # Define the URL or path for the notification

@@ -5,6 +5,8 @@ class StepsAthleteController < ApplicationController
   end
 
   def step2
+    @sports = Sport.all
+
   end
 
   def step3
